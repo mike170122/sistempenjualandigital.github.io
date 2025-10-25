@@ -82,597 +82,307 @@
                 <form id="loginForm" class="space-y-4">
                     <div>
                         <label for="loginEmail" class="block text-sm font-medium text-gray-700 mb-2">Email</label>
-                        <input type="email" id="loginEmail" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all text-sm sm:text-base">
+                        <input type="email" id="loginEmail" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent">
                     </div>
                     <div>
                         <label for="loginPassword" class="block text-sm font-medium text-gray-700 mb-2">Password</label>
-                        <input type="password" id="loginPassword" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all text-sm sm:text-base">
+                        <input type="password" id="loginPassword" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent">
                     </div>
-                    <button type="submit" class="w-full bg-gradient-to-r from-green-600 to-emerald-600 text-white py-3 rounded-lg font-semibold hover:from-green-700 hover:to-emerald-700 transition-all transform hover:scale-105 text-sm sm:text-base">
+                    <button type="submit" class="w-full bg-gradient-to-r from-green-600 to-emerald-600 text-white py-3 rounded-lg font-semibold hover:from-green-700 hover:to-emerald-700 transition-all duration-200">
                         Masuk
                     </button>
                 </form>
 
-                <!-- Register Form (Hidden) -->
-                <form id="registerForm" class="space-y-4 hidden">
-                    <div>
-                        <label for="registerName" class="block text-sm font-medium text-gray-700 mb-2">Nama Lengkap</label>
-                        <input type="text" id="registerName" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all text-sm sm:text-base">
-                    </div>
-                    <div>
-                        <label for="registerEmail" class="block text-sm font-medium text-gray-700 mb-2">Email</label>
-                        <input type="email" id="registerEmail" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all text-sm sm:text-base">
-                    </div>
-                    <div>
-                        <label for="registerPassword" class="block text-sm font-medium text-gray-700 mb-2">Password</label>
-                        <input type="password" id="registerPassword" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all text-sm sm:text-base">
-                    </div>
-                    <div>
-                        <label for="registerRole" class="block text-sm font-medium text-gray-700 mb-2">Role</label>
-                        <select id="registerRole" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all text-sm sm:text-base">
-                            <option value="">Pilih Role</option>
-                            <option value="admin">Admin</option>
-                            <option value="user">User</option>
-                        </select>
-                    </div>
-                    <button type="submit" class="w-full bg-gradient-to-r from-green-600 to-emerald-600 text-white py-3 rounded-lg font-semibold hover:from-green-700 hover:to-emerald-700 transition-all transform hover:scale-105 text-sm sm:text-base">
-                        Daftar
-                    </button>
-                </form>
-
                 <div class="mt-6 text-center">
-                    <button id="toggleAuth" class="text-green-600 hover:text-green-800 font-medium text-sm">
-                        Belum punya akun? Daftar di sini
-                    </button>
+                    <p class="text-gray-600">Belum punya akun? 
+                        <button id="showRegister" class="text-green-600 hover:text-green-700 font-semibold">Daftar</button>
+                    </p>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Main Application -->
-    <div id="mainApp" class="hidden h-full flex flex-col lg:flex-row">
-        <!-- Mobile Header -->
-        <div class="lg:hidden bg-white shadow-sm border-b border-gray-200 p-4">
-            <div class="flex items-center justify-between">
-                <div class="flex items-center space-x-3">
-                    <button id="mobileMenuBtn" class="p-2 rounded-lg hover:bg-gray-100">
-                        <i class="fas fa-bars text-gray-600"></i>
-                    </button>
-                    <div class="w-8 h-8 bg-gradient-to-r from-green-600 to-emerald-600 rounded-lg flex items-center justify-center">
-                        <i class="fas fa-shopping-cart text-white text-sm"></i>
+    <!-- Register Modal -->
+    <div id="registerModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-md mx-4 fade-in">
+            <div class="p-6 sm:p-8">
+                <div class="text-center mb-6">
+                    <div class="w-16 h-16 bg-gradient-to-r from-green-600 to-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-user-plus text-white text-2xl"></i>
                     </div>
-                    <h1 class="text-lg font-bold text-gray-800">Sistem Penjualan</h1>
+                    <h2 class="text-xl sm:text-2xl font-bold text-gray-800">Daftar Akun</h2>
+                    <p class="text-gray-600 mt-2 text-sm sm:text-base">Buat akun baru untuk mulai</p>
                 </div>
-                <div class="flex items-center space-x-2">
-                    <span class="text-xs text-gray-600">Online</span>
-                    <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+
+                <form id="registerForm" class="space-y-4">
+                    <div>
+                        <label for="registerName" class="block text-sm font-medium text-gray-700 mb-2">Nama Lengkap</label>
+                        <input type="text" id="registerName" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent">
+                    </div>
+                    <div>
+                        <label for="registerEmail" class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                        <input type="email" id="registerEmail" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent">
+                    </div>
+                    <div>
+                        <label for="registerPassword" class="block text-sm font-medium text-gray-700 mb-2">Password</label>
+                        <input type="password" id="registerPassword" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent">
+                    </div>
+                    <button type="submit" class="w-full bg-gradient-to-r from-green-600 to-emerald-600 text-white py-3 rounded-lg font-semibold hover:from-green-700 hover:to-emerald-700 transition-all duration-200">
+                        Daftar
+                    </button>
+                </form>
+
+                <div class="mt-6 text-center">
+                    <p class="text-gray-600">Sudah punya akun? 
+                        <button id="showLogin" class="text-green-600 hover:text-green-700 font-semibold">Masuk</button>
+                    </p>
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- Mobile Sidebar Overlay -->
-        <div id="mobileOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden lg:hidden"></div>
-        
+    <!-- Main App -->
+    <div id="mainApp" class="h-full flex hidden">
         <!-- Sidebar -->
-        <aside id="sidebar" class="fixed lg:relative inset-y-0 left-0 z-50 w-64 bg-white shadow-lg border-r border-gray-200 flex flex-col transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out">
-            <!-- Sidebar Header -->
-            <div class="p-4 border-b border-gray-200">
-                <div class="flex items-center justify-between">
-                    <div class="flex items-center space-x-3">
-                        <div class="w-10 h-10 bg-gradient-to-r from-green-600 to-emerald-600 rounded-lg flex items-center justify-center">
-                            <i class="fas fa-shopping-cart text-white text-lg"></i>
-                        </div>
-                        <div>
-                            <h1 class="text-lg font-bold text-gray-800">Sistem Penjualan</h1>
-                            <p class="text-xs text-gray-600" id="userWelcome">Selamat datang!</p>
-                        </div>
+        <div id="sidebar" class="sidebar-mobile lg:translate-x-0 fixed lg:relative z-40 w-64 h-full bg-white shadow-xl transition-transform duration-300 ease-in-out">
+            <div class="p-6 border-b border-gray-200">
+                <div class="flex items-center">
+                    <div class="w-10 h-10 bg-gradient-to-r from-green-600 to-emerald-600 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-shopping-cart text-white"></i>
                     </div>
-                    <button id="closeSidebarBtn" class="lg:hidden p-1 rounded hover:bg-gray-100">
-                        <i class="fas fa-times text-gray-600"></i>
-                    </button>
+                    <div class="ml-3">
+                        <h1 class="text-lg font-bold text-gray-800">Sistem Penjualan</h1>
+                        <p class="text-sm text-gray-600" id="userWelcome">Selamat datang!</p>
+                    </div>
                 </div>
             </div>
 
-            <!-- Sidebar Navigation -->
-            <nav class="flex-1 p-4">
-                <ul class="space-y-2">
-                    <li>
-                        <button class="sidebar-btn active w-full text-left px-4 py-3 rounded-lg transition-colors" data-tab="dashboard">
-                            <i class="fas fa-tachometer-alt mr-3 w-4"></i>Dashboard
-                        </button>
-                    </li>
-                    <li>
-                        <div class="text-xs font-semibold text-gray-500 uppercase tracking-wider px-4 py-2">Data Penjualan</div>
-                        <ul class="space-y-1">
-                            <li>
-                                <button class="sidebar-btn w-full text-left px-4 py-2 rounded-lg transition-colors text-sm" data-tab="sales">
-                                    <i class="fas fa-plus-circle mr-3 w-4"></i>Tambah Penjualan
-                                </button>
-                            </li>
-                            <li>
-                                <button class="sidebar-btn w-full text-left px-4 py-2 rounded-lg transition-colors text-sm" data-tab="history">
-                                    <i class="fas fa-list mr-3 w-4"></i>Kelola Penjualan
-                                </button>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <div class="text-xs font-semibold text-gray-500 uppercase tracking-wider px-4 py-2 mt-4">Laporan</div>
-                        <ul class="space-y-1">
-                            <li>
-                                <button class="sidebar-btn w-full text-left px-4 py-2 rounded-lg transition-colors text-sm" data-tab="reports" id="reportsTab" style="display: none;">
-                                    <i class="fas fa-chart-bar mr-3 w-4"></i>Laporan & Export
-                                </button>
-                            </li>
-                        </ul>
-                    </li>
-                    <li id="adminSection" style="display: none;">
-                        <div class="text-xs font-semibold text-gray-500 uppercase tracking-wider px-4 py-2 mt-4">Admin</div>
-                        <ul class="space-y-1">
-                            <li>
-                                <button class="sidebar-btn w-full text-left px-4 py-2 rounded-lg transition-colors text-sm" data-tab="users" id="usersTab">
-                                    <i class="fas fa-users mr-3 w-4"></i>Kelola User
-                                </button>
-                            </li>
-                            <li>
-                                <button class="sidebar-btn w-full text-left px-4 py-2 rounded-lg transition-colors text-sm" data-tab="generate" id="generateTab">
-                                    <i class="fas fa-magic mr-3 w-4"></i>Generate Data
-                                </button>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
+            <nav class="mt-6">
+                <button class="sidebar-btn active w-full flex items-center px-6 py-3 text-left transition-colors duration-200" data-section="dashboard">
+                    <i class="fas fa-chart-line w-5 mr-3"></i>
+                    Dashboard
+                </button>
+                <button class="sidebar-btn w-full flex items-center px-6 py-3 text-left transition-colors duration-200" data-section="sales">
+                    <i class="fas fa-shopping-bag w-5 mr-3"></i>
+                    Data Penjualan
+                </button>
+                <button class="sidebar-btn w-full flex items-center px-6 py-3 text-left transition-colors duration-200" data-section="products">
+                    <i class="fas fa-box w-5 mr-3"></i>
+                    Produk
+                </button>
+                <button class="sidebar-btn w-full flex items-center px-6 py-3 text-left transition-colors duration-200" data-section="reports">
+                    <i class="fas fa-chart-bar w-5 mr-3"></i>
+                    Laporan
+                </button>
             </nav>
 
-            <!-- Sidebar Footer -->
-            <div class="p-4 border-t border-gray-200">
-                <div class="text-xs text-gray-600 mb-2" id="liveTime"></div>
-                <button id="logoutBtn" class="w-full bg-red-500 hover:bg-red-600 text-white px-3 py-2 rounded-lg transition-colors text-sm">
-                    <i class="fas fa-sign-out-alt mr-2"></i>Keluar
+            <div class="absolute bottom-6 left-6 right-6">
+                <button id="logoutBtn" class="w-full flex items-center px-4 py-3 text-red-600 hover:bg-red-50 rounded-lg transition-colors duration-200">
+                    <i class="fas fa-sign-out-alt w-5 mr-3"></i>
+                    Keluar
                 </button>
             </div>
-        </aside>
+        </div>
 
         <!-- Main Content -->
-        <div class="flex-1 flex flex-col min-h-0">
-            <!-- Desktop Header -->
-            <header class="hidden lg:block bg-white shadow-sm border-b border-gray-200 px-6 py-4">
+        <div class="flex-1 flex flex-col min-h-full">
+            <!-- Header -->
+            <header class="bg-white shadow-sm border-b border-gray-200 px-6 py-4">
                 <div class="flex items-center justify-between">
-                    <h2 id="pageTitle" class="text-xl font-semibold text-gray-800">Dashboard</h2>
+                    <div class="flex items-center">
+                        <button id="sidebarToggle" class="lg:hidden p-2 rounded-lg hover:bg-gray-100">
+                            <i class="fas fa-bars text-gray-600"></i>
+                        </button>
+                        <h2 id="pageTitle" class="text-xl font-semibold text-gray-800 ml-2 lg:ml-0">Dashboard</h2>
+                    </div>
                     <div class="flex items-center space-x-4">
-                        <span class="text-sm text-gray-600">Online</span>
-                        <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                        <div class="text-sm text-gray-600" id="currentDateTime"></div>
                     </div>
                 </div>
             </header>
 
             <!-- Content Area -->
-            <main class="flex-1 overflow-y-auto bg-gray-50">
-                <!-- Dashboard Tab -->
-                <div id="dashboard" class="tab-content p-3 lg:p-6">
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mb-6 lg:mb-8">
-                        <div class="bg-white rounded-xl shadow-md p-4 lg:p-6 border-l-4 border-green-500">
-                            <div class="flex items-center justify-between">
-                                <div>
+            <main class="flex-1 p-6 overflow-auto">
+                <!-- Dashboard Section -->
+                <div id="dashboardSection" class="section">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                        <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100">
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-shopping-cart text-blue-600 text-xl"></i>
+                                </div>
+                                <div class="ml-4">
                                     <p class="text-sm text-gray-600">Total Penjualan</p>
-                                    <p class="text-xl lg:text-2xl font-bold text-gray-800" id="totalSales">0</p>
-                                </div>
-                                <div class="w-10 h-10 lg:w-12 lg:h-12 bg-green-100 rounded-lg flex items-center justify-center">
-                                    <i class="fas fa-shopping-cart text-green-600 text-lg lg:text-xl"></i>
+                                    <p class="text-2xl font-bold text-gray-800" id="totalSales">0</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="bg-white rounded-xl shadow-md p-4 lg:p-6 border-l-4 border-blue-500">
-                            <div class="flex items-center justify-between">
-                                <div>
-                                    <p class="text-sm text-gray-600">Lunas</p>
-                                    <p class="text-xl lg:text-2xl font-bold text-gray-800" id="paidSales">0</p>
+                        <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100">
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-dollar-sign text-green-600 text-xl"></i>
                                 </div>
-                                <div class="w-10 h-10 lg:w-12 lg:h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                                    <i class="fas fa-check-circle text-blue-600 text-lg lg:text-xl"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="bg-white rounded-xl shadow-md p-4 lg:p-6 border-l-4 border-orange-500">
-                            <div class="flex items-center justify-between">
-                                <div>
-                                    <p class="text-sm text-gray-600">Hutang</p>
-                                    <p class="text-xl lg:text-2xl font-bold text-gray-800" id="debtSales">0</p>
-                                </div>
-                                <div class="w-10 h-10 lg:w-12 lg:h-12 bg-orange-100 rounded-lg flex items-center justify-center">
-                                    <i class="fas fa-credit-card text-orange-600 text-lg lg:text-xl"></i>
+                                <div class="ml-4">
+                                    <p class="text-sm text-gray-600">Pendapatan</p>
+                                    <p class="text-2xl font-bold text-gray-800" id="totalRevenue">Rp 0</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="bg-white rounded-xl shadow-md p-4 lg:p-6 border-l-4 border-red-500">
-                            <div class="flex items-center justify-between">
-                                <div>
-                                    <p class="text-sm text-gray-600">Belum Lunas</p>
-                                    <p class="text-xl lg:text-2xl font-bold text-gray-800" id="overdueSales">0</p>
+                        <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100">
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-box text-purple-600 text-xl"></i>
                                 </div>
-                                <div class="w-10 h-10 lg:w-12 lg:h-12 bg-red-100 rounded-lg flex items-center justify-center">
-                                    <i class="fas fa-exclamation-triangle text-red-600 text-lg lg:text-xl"></i>
+                                <div class="ml-4">
+                                    <p class="text-sm text-gray-600">Total Produk</p>
+                                    <p class="text-2xl font-bold text-gray-800" id="totalProducts">0</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100">
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-calendar-day text-orange-600 text-xl"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <p class="text-sm text-gray-600">Penjualan Hari Ini</p>
+                                    <p class="text-2xl font-bold text-gray-800" id="todaySales">0</p>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="bg-white rounded-xl shadow-md p-4 lg:p-6">
+                    <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100">
                         <h3 class="text-lg font-semibold text-gray-800 mb-4">Penjualan Terbaru</h3>
                         <div class="overflow-x-auto">
-                            <div id="recentSales" class="space-y-3">
-                                <p class="text-gray-500 text-center py-8">Belum ada data penjualan</p>
-                            </div>
+                            <table class="w-full">
+                                <thead>
+                                    <tr class="border-b border-gray-200">
+                                        <th class="text-left py-3 px-4 font-semibold text-gray-700">Tanggal</th>
+                                        <th class="text-left py-3 px-4 font-semibold text-gray-700">Produk</th>
+                                        <th class="text-left py-3 px-4 font-semibold text-gray-700">Jumlah</th>
+                                        <th class="text-left py-3 px-4 font-semibold text-gray-700">Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="recentSalesTable">
+                                    <tr>
+                                        <td colspan="4" class="text-center py-8 text-gray-500">Belum ada data penjualan</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
 
-                <!-- Sales Input Tab -->
-                <div id="sales" class="tab-content hidden p-3 lg:p-6">
-                    <div class="bg-white rounded-xl shadow-md p-4 lg:p-6 max-w-4xl mx-auto">
-                        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 space-y-3 sm:space-y-0">
-                            <h3 class="text-lg lg:text-xl font-semibold text-gray-800" id="formTitle">Tambah Data Penjualan</h3>
-                            <button id="cancelEdit" class="hidden bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg transition-colors text-sm w-full sm:w-auto">
-                                <i class="fas fa-times mr-2"></i>Batal Edit
-                            </button>
-                        </div>
-                        <form id="salesForm" class="space-y-4">
-                            <input type="hidden" id="editId" value="">
-                            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                                <div>
-                                    <label for="customerName" class="block text-sm font-medium text-gray-700 mb-2">Nama Pembeli</label>
-                                    <input type="text" id="customerName" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all text-sm sm:text-base">
-                                </div>
-                                <div>
-                                    <label for="customerPhone" class="block text-sm font-medium text-gray-700 mb-2">No. Telepon</label>
-                                    <input type="tel" id="customerPhone" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all text-sm sm:text-base">
-                                </div>
-                            </div>
-                            
-                            <div>
-                                <label for="customerAddress" class="block text-sm font-medium text-gray-700 mb-2">Alamat</label>
-                                <textarea id="customerAddress" required rows="3" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all text-sm sm:text-base"></textarea>
-                            </div>
-
-                            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                                <div>
-                                    <label for="productName" class="block text-sm font-medium text-gray-700 mb-2">Nama Produk</label>
-                                    <input type="text" id="productName" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all text-sm sm:text-base">
-                                </div>
-                                <div>
-                                    <label for="quantity" class="block text-sm font-medium text-gray-700 mb-2">Jumlah</label>
-                                    <input type="number" id="quantity" required min="1" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all text-sm sm:text-base">
-                                </div>
-                            </div>
-
-                            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                                <div>
-                                    <label for="unitPrice" class="block text-sm font-medium text-gray-700 mb-2">Harga Satuan (Rp)</label>
-                                    <input type="number" id="unitPrice" required min="0" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all text-sm sm:text-base">
-                                </div>
-                                <div>
-                                    <label for="totalAmount" class="block text-sm font-medium text-gray-700 mb-2">Total Harga (Rp)</label>
-                                    <input type="number" id="totalAmount" required min="0" readonly class="w-full px-4 py-3 border border-gray-300 rounded-lg bg-gray-50 text-sm sm:text-base">
-                                </div>
-                            </div>
-
-                            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                                <div>
-                                    <label for="paymentMethod" class="block text-sm font-medium text-gray-700 mb-2">Metode Pembayaran</label>
-                                    <select id="paymentMethod" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all text-sm sm:text-base">
-                                        <option value="">Pilih Metode Pembayaran</option>
-                                        <option value="tunai">Tunai</option>
-                                        <option value="transfer">Transfer</option>
-                                        <option value="kredit">Kredit/Cicilan</option>
-                                    </select>
-                                </div>
-                                <div>
-                                    <label for="salesStatus" class="block text-sm font-medium text-gray-700 mb-2">Status Pembayaran</label>
-                                    <select id="salesStatus" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all text-sm sm:text-base">
-                                        <option value="">Pilih Status</option>
-                                        <option value="hutang">Hutang</option>
-                                        <option value="paid">Lunas</option>
-                                        <option value="overdue">Belum Lunas</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div>
-                                <label for="salesPerson" class="block text-sm font-medium text-gray-700 mb-2">Sales Person</label>
-                                <select id="salesPerson" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all text-sm sm:text-base">
-                                    <option value="">Pilih Sales Person</option>
-                                    <option value="Mario Haulussy">Mario Haulussy</option>
-                                    <option value="Macho Haulussy">Macho Haulussy</option>
-                                    <option value="Ryan Pattiwael">Ryan Pattiwael</option>
-                                    <option value="Stevy Wuarlela">Stevy Wuarlela</option>
-                                    <option value="Stevian Lauluw">Stevian Lauluw</option>
-                                    <option value="Gilberd">Gilberd</option>
-                                    <option value="Glen Tansora">Glen Tansora</option>
-                                    <option value="Glen Ohman">Glen Ohman</option>
-                                </select>
-                            </div>
-
-                            <div>
-                                <label for="salesDescription" class="block text-sm font-medium text-gray-700 mb-2">Keterangan</label>
-                                <textarea id="salesDescription" rows="3" placeholder="Masukkan keterangan tambahan (opsional)" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all text-sm sm:text-base"></textarea>
-                            </div>
-
-                            <button type="submit" class="w-full bg-gradient-to-r from-green-600 to-emerald-600 text-white py-3 rounded-lg font-semibold hover:from-green-700 hover:to-emerald-700 transition-all transform hover:scale-105 text-sm sm:text-base">
-                                <i class="fas fa-save mr-2"></i><span id="submitText">Simpan Penjualan</span>
-                            </button>
-                        </form>
-                    </div>
-                </div>
-
-                <!-- History Tab -->
-                <div id="history" class="tab-content hidden p-3 lg:p-6">
-                    <div class="bg-white rounded-xl shadow-md p-4 lg:p-6">
-                        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 space-y-4 sm:space-y-0">
-                            <h3 class="text-lg lg:text-xl font-semibold text-gray-800">Kelola Data Penjualan</h3>
-                            <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2 w-full sm:w-auto">
-                                <input type="text" id="searchInput" placeholder="Cari nama pembeli..." class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent text-sm">
-                                <select id="statusFilter" class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent text-sm">
-                                    <option value="">Semua Status</option>
-                                    <option value="hutang">Hutang</option>
-                                    <option value="paid">Lunas</option>
-                                    <option value="overdue">Belum Lunas</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="overflow-x-auto">
-                            <div id="salesList" class="space-y-3">
-                                <p class="text-gray-500 text-center py-8">Belum ada data penjualan</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Reports Tab -->
-                <div id="reports" class="tab-content hidden p-3 lg:p-6">
-                    <div class="bg-white rounded-xl shadow-md p-4 lg:p-6">
-                        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 space-y-4 sm:space-y-0">
-                            <h3 class="text-lg lg:text-xl font-semibold text-gray-800">Laporan & Export</h3>
-                            <div class="grid grid-cols-2 lg:flex gap-2 w-full sm:w-auto">
-                                <button id="exportExcel" class="bg-green-600 hover:bg-green-700 text-white px-3 py-2 rounded-lg transition-colors text-xs lg:text-sm">
-                                    <i class="fas fa-file-excel mr-1 lg:mr-2"></i>Excel
-                                </button>
-                                <button id="exportPDF" class="bg-red-600 hover:bg-red-700 text-white px-3 py-2 rounded-lg transition-colors text-xs lg:text-sm">
-                                    <i class="fas fa-file-pdf mr-1 lg:mr-2"></i>PDF
-                                </button>
-                                <button id="exportJSON" class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-2 rounded-lg transition-colors text-xs lg:text-sm">
-                                    <i class="fas fa-download mr-1 lg:mr-2"></i>Export
-                                </button>
-                                <button id="importJSON" class="bg-purple-600 hover:bg-purple-700 text-white px-3 py-2 rounded-lg transition-colors text-xs lg:text-sm">
-                                    <i class="fas fa-upload mr-1 lg:mr-2"></i>Import JSON
-                                </button>
-                                <button id="importExcel" class="bg-orange-600 hover:bg-orange-700 text-white px-3 py-2 rounded-lg transition-colors text-xs lg:text-sm">
-                                    <i class="fas fa-file-excel mr-1 lg:mr-2"></i>Import Excel
-                                </button>
-                                <button id="importPDF" class="bg-red-600 hover:bg-red-700 text-white px-3 py-2 rounded-lg transition-colors text-xs lg:text-sm">
-                                    <i class="fas fa-file-pdf mr-1 lg:mr-2"></i>Import PDF
-                                </button>
-                            </div>
-                        </div>
-                        
-                        <!-- Import/Export Section -->
-                        <div class="bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-lg p-4 mb-6">
-                            <div class="flex items-start">
-                                <i class="fas fa-sync-alt text-green-600 mr-3 mt-1 text-lg"></i>
-                                <div>
-                                    <h4 class="font-semibold text-green-800 mb-2">🔄 Sinkronisasi Data Multi-Device</h4>
-                                    <p class="text-green-700 text-sm mb-3">Bagikan data penjualan antar HP/Laptop dengan mudah:</p>
-                                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 text-sm">
-                                        <div class="bg-white rounded-lg p-3 border border-green-100">
-                                            <h5 class="font-semibold text-green-800 mb-2">📤 Cara Export (Pengirim)</h5>
-                                            <ol class="text-green-700 list-decimal list-inside space-y-1">
-                                                <li>Klik tombol "Export/Excel" di atas</li>
-                                                <li><strong>Mobile:</strong> Pilih Download/Share/Copy</li>
-                                                <li><strong>Desktop:</strong> File auto-download</li>
-                                                <li>Kirim file via WhatsApp/Email</li>
-                                            </ol>
-                                            <div class="mt-2 p-2 bg-green-50 rounded text-xs">
-                                                <strong>📱 Tips Mobile:</strong> Jika JSON gagal, gunakan Excel export yang lebih kompatibel
-                                            </div>
-                                        </div>
-                                        <div class="bg-white rounded-lg p-3 border border-green-100">
-                                            <h5 class="font-semibold text-green-800 mb-2">📥 Cara Import (Penerima)</h5>
-                                            <ol class="text-green-700 list-decimal list-inside space-y-1">
-                                                <li>Terima file dari pengirim</li>
-                                                <li>Klik "Import JSON" atau "Import Excel"</li>
-                                                <li>Pilih file yang diterima</li>
-                                                <li>Data otomatis tersinkronisasi</li>
-                                            </ol>
-                                        </div>
-                                        <div class="bg-white rounded-lg p-3 border border-orange-100">
-                                            <h5 class="font-semibold text-orange-800 mb-2">📊 Import Excel (Alternatif 1)</h5>
-                                            <ol class="text-orange-700 list-decimal list-inside space-y-1">
-                                                <li><strong>Mobile:</strong> Export ke Excel</li>
-                                                <li>Kirim file .xlsx via WhatsApp</li>
-                                                <li><strong>Admin PC:</strong> Import Excel</li>
-                                                <li>Data otomatis dikonversi</li>
-                                            </ol>
-                                            <div class="mt-2 p-2 bg-orange-50 rounded text-xs">
-                                                <strong>💡 Keunggulan:</strong> Excel lebih kompatibel di semua device & mudah diedit manual
-                                            </div>
-                                        </div>
-                                        <div class="bg-white rounded-lg p-3 border border-red-100">
-                                            <h5 class="font-semibold text-red-800 mb-2">📄 Import PDF (Alternatif 2)</h5>
-                                            <ol class="text-red-700 list-decimal list-inside space-y-1">
-                                                <li><strong>Mobile:</strong> Export ke PDF</li>
-                                                <li>Kirim file .pdf via WhatsApp</li>
-                                                <li><strong>Admin PC:</strong> Import PDF</li>
-                                                <li>OCR otomatis ekstrak data</li>
-                                            </ol>
-                                            <div class="mt-2 p-2 bg-red-50 rounded text-xs">
-                                                <strong>🔍 Keunggulan:</strong> PDF universal, OCR smart parsing, backup visual data
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="mt-3 p-2 bg-green-100 rounded border border-green-200">
-                                        <p class="text-green-800 text-xs">✅ <strong>Keamanan:</strong> Data tidak duplikat, merge otomatis, tracking lengkap. Mendukung JSON, Excel & PDF import.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Hidden file inputs for import -->
-                        <input type="file" id="importFile" accept=".json" style="display: none;">
-                        <input type="file" id="importExcelFile" accept=".xlsx,.xls" style="display: none;">
-                        <input type="file" id="importPDFFile" accept=".pdf" style="display: none;">
-                        
-                        <!-- Sync Status -->
-                        <div id="syncStatus" class="hidden mb-6">
-                            <div class="bg-green-50 border border-green-200 rounded-lg p-4">
-                                <div class="flex items-center">
-                                    <i class="fas fa-check-circle text-green-600 mr-2"></i>
-                                    <span class="text-green-800 font-semibold">Data berhasil disinkronisasi!</span>
-                                </div>
-                                <p class="text-green-700 text-sm mt-1" id="syncDetails"></p>
-                            </div>
-                        </div>
-                        
-                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                            <div class="bg-gray-50 rounded-lg p-4">
-                                <h4 class="font-semibold text-gray-800 mb-4">Ringkasan Bulanan</h4>
-                                <div id="monthlyReport" class="space-y-2">
-                                    <div class="flex justify-between">
-                                        <span class="text-gray-600">Total Penjualan:</span>
-                                        <span class="font-semibold" id="monthlyTotal">Rp 0</span>
-                                    </div>
-                                    <div class="flex justify-between">
-                                        <span class="text-gray-600">Sudah Dibayar:</span>
-                                        <span class="font-semibold text-green-600" id="monthlyPaid">Rp 0</span>
-                                    </div>
-                                    <div class="flex justify-between">
-                                        <span class="text-gray-600">Belum Dibayar:</span>
-                                        <span class="font-semibold text-red-600" id="monthlyUnpaid">Rp 0</span>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="bg-gray-50 rounded-lg p-4">
-                                <h4 class="font-semibold text-gray-800 mb-4">Metode Pembayaran</h4>
-                                <div id="paymentMethodReport" class="space-y-2">
-                                    <div class="flex justify-between">
-                                        <span class="text-gray-600">Tunai:</span>
-                                        <span class="font-semibold" id="cashCount">0</span>
-                                    </div>
-                                    <div class="flex justify-between">
-                                        <span class="text-gray-600">Transfer:</span>
-                                        <span class="font-semibold" id="transferCount">0</span>
-                                    </div>
-                                    <div class="flex justify-between">
-                                        <span class="text-gray-600">Kredit:</span>
-                                        <span class="font-semibold" id="creditCount">0</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Users Management Tab -->
-                <div id="users" class="tab-content hidden p-3 lg:p-6">
-                    <div class="bg-white rounded-xl shadow-md p-4 lg:p-6">
-                        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 space-y-4 sm:space-y-0">
-                            <h3 class="text-lg lg:text-xl font-semibold text-gray-800">Kelola User</h3>
-                            <button id="addUserBtn" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg transition-colors text-sm w-full sm:w-auto">
-                                <i class="fas fa-plus mr-2"></i>Tambah User
-                            </button>
-                        </div>
-                        
-                        <!-- Add User Form -->
-                        <div id="addUserForm" class="hidden bg-gray-50 rounded-lg p-4 mb-6">
-                            <h4 class="font-semibold text-gray-800 mb-4">Tambah User Baru</h4>
-                            <form id="userForm" class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                                <div>
-                                    <label for="newUserName" class="block text-sm font-medium text-gray-700 mb-2">Nama Lengkap</label>
-                                    <input type="text" id="newUserName" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent text-sm">
-                                </div>
-                                <div>
-                                    <label for="newUserEmail" class="block text-sm font-medium text-gray-700 mb-2">Email</label>
-                                    <input type="email" id="newUserEmail" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent text-sm">
-                                </div>
-                                <div>
-                                    <label for="newUserPassword" class="block text-sm font-medium text-gray-700 mb-2">Password</label>
-                                    <input type="password" id="newUserPassword" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent text-sm">
-                                </div>
-                                <div>
-                                    <label for="newUserRole" class="block text-sm font-medium text-gray-700 mb-2">Role</label>
-                                    <select id="newUserRole" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent text-sm">
-                                        <option value="">Pilih Role</option>
-                                        <option value="admin">Admin</option>
-                                        <option value="user">User</option>
-                                    </select>
-                                </div>
-                                <div class="lg:col-span-2 flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2">
-                                    <button type="submit" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg transition-colors text-sm flex-1 sm:flex-none">
-                                        <i class="fas fa-save mr-2"></i>Simpan User
-                                    </button>
-                                    <button type="button" id="cancelAddUser" class="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg transition-colors text-sm flex-1 sm:flex-none">
-                                        <i class="fas fa-times mr-2"></i>Batal
-                                    </button>
-                                </div>
-                            </form>
-                        </div>
-                        
-                        <!-- Users List -->
-                        <div id="usersList" class="space-y-3">
-                            <!-- Users will be loaded here -->
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Generate Data Tab -->
-                <div id="generate" class="tab-content hidden p-3 lg:p-6">
-                    <div class="bg-white rounded-xl shadow-md p-4 lg:p-6">
-                        <h3 class="text-lg lg:text-xl font-semibold text-gray-800 mb-6">Generate Data Penjualan</h3>
-                        
-                        <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-6">
-                            <div class="flex items-center">
-                                <i class="fas fa-exclamation-triangle text-yellow-600 mr-2"></i>
-                                <p class="text-yellow-800 text-sm">Fitur ini akan membuat data penjualan dummy untuk testing. Data yang sudah ada tidak akan terhapus.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                            <div>
-                                <label for="generateCount" class="block text-sm font-medium text-gray-700 mb-2">Jumlah Data yang Akan Dibuat</label>
-                                <select id="generateCount" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent">
-                                    <option value="10">10 Data</option>
-                                    <option value="25">25 Data</option>
-                                    <option value="50">50 Data</option>
-                                    <option value="100">100 Data</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Status Data</label>
-                                <div class="space-y-2">
-                                    <label class="flex items-center">
-                                        <input type="checkbox" id="genDebt" checked class="mr-2">
-                                        <span class="text-sm">Hutang</span>
-                                    </label>
-                                    <label class="flex items-center">
-                                        <input type="checkbox" id="genPaid" checked class="mr-2">
-                                        <span class="text-sm">Lunas</span>
-                                    </label>
-                                    <label class="flex items-center">
-                                        <input type="checkbox" id="genOverdue" checked class="mr-2">
-                                        <span class="text-sm">Belum Lunas</span>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <button id="generateDataBtn" class="mt-6 bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg transition-colors font-semibold w-full lg:w-auto">
-                            <i class="fas fa-magic mr-2"></i>Generate Data Penjualan
+                <!-- Sales Section -->
+                <div id="salesSection" class="section hidden">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
+                        <h3 class="text-xl font-semibold text-gray-800">Data Penjualan</h3>
+                        <button id="addSaleBtn" class="bg-gradient-to-r from-green-600 to-emerald-600 text-white px-6 py-2 rounded-lg hover:from-green-700 hover:to-emerald-700 transition-all duration-200 flex items-center">
+                            <i class="fas fa-plus mr-2"></i>
+                            Tambah Penjualan
                         </button>
-                        
-                        <div id="generateProgress" class="hidden mt-4">
-                            <div class="bg-gray-200 rounded-full h-2">
-                                <div id="progressBar" class="bg-purple-600 h-2 rounded-full transition-all duration-300" style="width: 0%"></div>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-100">
+                        <div class="p-6">
+                            <div class="overflow-x-auto">
+                                <table class="w-full">
+                                    <thead>
+                                        <tr class="border-b border-gray-200">
+                                            <th class="text-left py-3 px-4 font-semibold text-gray-700">Tanggal</th>
+                                            <th class="text-left py-3 px-4 font-semibold text-gray-700">Produk</th>
+                                            <th class="text-left py-3 px-4 font-semibold text-gray-700">Harga</th>
+                                            <th class="text-left py-3 px-4 font-semibold text-gray-700">Jumlah</th>
+                                            <th class="text-left py-3 px-4 font-semibold text-gray-700">Total</th>
+                                            <th class="text-left py-3 px-4 font-semibold text-gray-700">Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="salesTable">
+                                        <tr>
+                                            <td colspan="6" class="text-center py-8 text-gray-500">Belum ada data penjualan</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
-                            <p class="text-sm text-gray-600 mt-2">Sedang membuat data...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Products Section -->
+                <div id="productsSection" class="section hidden">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
+                        <h3 class="text-xl font-semibold text-gray-800">Daftar Produk</h3>
+                        <button id="addProductBtn" class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-2 rounded-lg hover:from-blue-700 hover:to-indigo-700 transition-all duration-200 flex items-center">
+                            <i class="fas fa-plus mr-2"></i>
+                            Tambah Produk
+                        </button>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-100">
+                        <div class="p-6">
+                            <div class="overflow-x-auto">
+                                <table class="w-full">
+                                    <thead>
+                                        <tr class="border-b border-gray-200">
+                                            <th class="text-left py-3 px-4 font-semibold text-gray-700">Nama Produk</th>
+                                            <th class="text-left py-3 px-4 font-semibold text-gray-700">Harga</th>
+                                            <th class="text-left py-3 px-4 font-semibold text-gray-700">Stok</th>
+                                            <th class="text-left py-3 px-4 font-semibold text-gray-700">Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="productsTable">
+                                        <tr>
+                                            <td colspan="4" class="text-center py-8 text-gray-500">Belum ada data produk</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reports Section -->
+                <div id="reportsSection" class="section hidden">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-6">Laporan Penjualan</h3>
+                    
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+                        <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100">
+                            <h4 class="text-lg font-semibold text-gray-800 mb-4">Filter Laporan</h4>
+                            <div class="space-y-4">
+                                <div>
+                                    <label for="reportStartDate" class="block text-sm font-medium text-gray-700 mb-2">Tanggal Mulai</label>
+                                    <input type="date" id="reportStartDate" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent">
+                                </div>
+                                <div>
+                                    <label for="reportEndDate" class="block text-sm font-medium text-gray-700 mb-2">Tanggal Akhir</label>
+                                    <input type="date" id="reportEndDate" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent">
+                                </div>
+                                <button id="generateReportBtn" class="w-full bg-gradient-to-r from-green-600 to-emerald-600 text-white py-2 rounded-lg hover:from-green-700 hover:to-emerald-700 transition-all duration-200">
+                                    Generate Laporan
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100">
+                            <h4 class="text-lg font-semibold text-gray-800 mb-4">Export Data</h4>
+                            <div class="space-y-3">
+                                <button id="exportExcelBtn" class="w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition-colors duration-200 flex items-center justify-center">
+                                    <i class="fas fa-file-excel mr-2"></i>
+                                    Export ke Excel
+                                </button>
+                                <button id="exportPdfBtn" class="w-full bg-red-600 text-white py-2 rounded-lg hover:bg-red-700 transition-colors duration-200 flex items-center justify-center">
+                                    <i class="fas fa-file-pdf mr-2"></i>
+                                    Export ke PDF
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="reportResults" class="bg-white rounded-xl shadow-sm border border-gray-100 hidden">
+                        <div class="p-6">
+                            <h4 class="text-lg font-semibold text-gray-800 mb-4">Hasil Laporan</h4>
+                            <div id="reportContent"></div>
                         </div>
                     </div>
                 </div>
@@ -680,1826 +390,711 @@
         </div>
     </div>
 
-    <!-- Success Modal -->
-    <div id="successModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
-        <div class="bg-white rounded-2xl shadow-2xl p-6 mx-4 max-w-sm w-full text-center fade-in">
-            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <i class="fas fa-check text-green-600 text-2xl"></i>
+    <!-- Add Sale Modal -->
+    <div id="addSaleModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-md mx-4 fade-in">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-xl font-semibold text-gray-800">Tambah Penjualan</h3>
+                    <button id="closeSaleModal" class="text-gray-400 hover:text-gray-600">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+
+                <form id="addSaleForm" class="space-y-4">
+                    <div>
+                        <label for="saleDate" class="block text-sm font-medium text-gray-700 mb-2">Tanggal Penjualan</label>
+                        <input type="date" id="saleDate" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent">
+                    </div>
+                    <div>
+                        <label for="saleProduct" class="block text-sm font-medium text-gray-700 mb-2">Produk</label>
+                        <select id="saleProduct" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent">
+                            <option value="">Pilih Produk</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="salePrice" class="block text-sm font-medium text-gray-700 mb-2">Harga</label>
+                        <input type="number" id="salePrice" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent" readonly>
+                    </div>
+                    <div>
+                        <label for="saleQuantity" class="block text-sm font-medium text-gray-700 mb-2">Jumlah</label>
+                        <input type="number" id="saleQuantity" required min="1" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent">
+                    </div>
+                    <div>
+                        <label for="saleTotal" class="block text-sm font-medium text-gray-700 mb-2">Total</label>
+                        <input type="number" id="saleTotal" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent bg-gray-50" readonly>
+                    </div>
+                    <div class="flex space-x-3 pt-4">
+                        <button type="button" id="cancelSale" class="flex-1 px-4 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors duration-200">
+                            Batal
+                        </button>
+                        <button type="submit" class="flex-1 bg-gradient-to-r from-green-600 to-emerald-600 text-white py-3 rounded-lg hover:from-green-700 hover:to-emerald-700 transition-all duration-200">
+                            Simpan
+                        </button>
+                    </div>
+                </form>
             </div>
-            <h3 class="text-lg font-semibold text-gray-800 mb-2">Berhasil!</h3>
-            <p id="successMessage" class="text-gray-600 mb-4">Data berhasil disimpan</p>
-            <button id="closeSuccessModal" class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-lg transition-colors">
-                OK
-            </button>
         </div>
     </div>
 
-    <!-- Delete Confirmation Modal -->
-    <div id="deleteModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
-        <div class="bg-white rounded-2xl shadow-2xl p-6 mx-4 max-w-sm w-full text-center fade-in">
-            <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <i class="fas fa-trash text-red-600 text-2xl"></i>
-            </div>
-            <h3 class="text-lg font-semibold text-gray-800 mb-2">Konfirmasi Hapus</h3>
-            <p class="text-gray-600 mb-6">Apakah Anda yakin ingin menghapus data penjualan ini? Tindakan ini tidak dapat dibatalkan.</p>
-            <div class="flex space-x-3">
-                <button id="cancelDelete" class="flex-1 bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg transition-colors">
-                    Batal
-                </button>
-                <button id="confirmDelete" class="flex-1 bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg transition-colors">
-                    Hapus
-                </button>
+    <!-- Add Product Modal -->
+    <div id="addProductModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-md mx-4 fade-in">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-xl font-semibold text-gray-800">Tambah Produk</h3>
+                    <button id="closeProductModal" class="text-gray-400 hover:text-gray-600">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+
+                <form id="addProductForm" class="space-y-4">
+                    <div>
+                        <label for="productName" class="block text-sm font-medium text-gray-700 mb-2">Nama Produk</label>
+                        <input type="text" id="productName" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                    </div>
+                    <div>
+                        <label for="productPrice" class="block text-sm font-medium text-gray-700 mb-2">Harga</label>
+                        <input type="number" id="productPrice" required min="0" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                    </div>
+                    <div>
+                        <label for="productStock" class="block text-sm font-medium text-gray-700 mb-2">Stok</label>
+                        <input type="number" id="productStock" required min="0" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                    </div>
+                    <div class="flex space-x-3 pt-4">
+                        <button type="button" id="cancelProduct" class="flex-1 px-4 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors duration-200">
+                            Batal
+                        </button>
+                        <button type="submit" class="flex-1 bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-3 rounded-lg hover:from-blue-700 hover:to-indigo-700 transition-all duration-200">
+                            Simpan
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
 
     <script>
-        // Application state
+        // Global variables
         let currentUser = null;
-        let sales = JSON.parse(localStorage.getItem('sales')) || [];
-        let users = JSON.parse(localStorage.getItem('users_sales')) || [
-            { id: 1, name: 'Admin', email: 'admin@admin.com', password: 'admin123', role: 'admin' },
-            { id: 2, name: 'User', email: 'user@user.com', password: 'user123', role: 'user' }
-        ];
+        let salesData = JSON.parse(localStorage.getItem('salesData')) || [];
+        let productsData = JSON.parse(localStorage.getItem('productsData')) || [];
+        let currentSection = 'dashboard';
 
-        // Mobile menu functionality
-        function initMobileMenu() {
-            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-            const closeSidebarBtn = document.getElementById('closeSidebarBtn');
-            const sidebar = document.getElementById('sidebar');
-            const mobileOverlay = document.getElementById('mobileOverlay');
+        // Initialize app
+        document.addEventListener('DOMContentLoaded', function() {
+            checkOperatingHours();
+            initializeApp();
+            setInterval(updateDateTime, 1000);
+            updateDateTime();
+        });
 
-            function openSidebar() {
-                sidebar.classList.remove('-translate-x-full');
-                mobileOverlay.classList.remove('hidden');
-            }
-
-            function closeSidebar() {
-                sidebar.classList.add('-translate-x-full');
-                mobileOverlay.classList.add('hidden');
-            }
-
-            mobileMenuBtn.addEventListener('click', openSidebar);
-            closeSidebarBtn.addEventListener('click', closeSidebar);
-            mobileOverlay.addEventListener('click', closeSidebar);
-
-            // Close sidebar when clicking on menu items on mobile
-            document.querySelectorAll('.sidebar-btn').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    if (window.innerWidth < 1024) {
-                        closeSidebar();
-                    }
-                });
-            });
-        }
-
-        // Check operating hours (7 AM to 11 PM)
+        // Check operating hours
         function checkOperatingHours() {
             const now = new Date();
             const hour = now.getHours();
+            const offlineNotice = document.getElementById('offlineNotice');
+            const currentTimeEl = document.getElementById('currentTime');
             
             if (hour < 7 || hour >= 23) {
-                document.getElementById('offlineNotice').classList.remove('hidden');
-                document.getElementById('authModal').classList.add('hidden');
-                document.getElementById('mainApp').classList.add('hidden');
+                offlineNotice.classList.remove('hidden');
+                setInterval(() => {
+                    const now = new Date();
+                    currentTimeEl.textContent = now.toLocaleTimeString('id-ID');
+                }, 1000);
                 return false;
-            } else {
-                document.getElementById('offlineNotice').classList.add('hidden');
-                return true;
             }
+            return true;
         }
 
-        // Update live time
-        function updateTime() {
-            const now = new Date();
-            const timeString = now.toLocaleTimeString('id-ID');
-            const dateString = now.toLocaleDateString('id-ID');
-            
-            document.getElementById('liveTime').textContent = `${dateString} ${timeString}`;
-            document.getElementById('currentTime').textContent = timeString;
-        }
+        // Initialize application
+        function initializeApp() {
+            if (!checkOperatingHours()) return;
 
-        // Initialize app
-        function initApp() {
-            if (!checkOperatingHours()) {
-                setInterval(checkOperatingHours, 60000); // Check every minute
-                setInterval(updateTime, 1000);
-                return;
-            }
-
-            updateTime();
-            setInterval(updateTime, 1000);
-            setInterval(checkOperatingHours, 60000);
-            initMobileMenu();
-
-            // Check if user is logged in
-            const savedUser = localStorage.getItem('currentUser_sales');
+            const savedUser = localStorage.getItem('currentUser');
             if (savedUser) {
                 currentUser = JSON.parse(savedUser);
                 showMainApp();
+            } else {
+                showAuthModal();
             }
 
-            // Auto-calculate total amount
-            document.getElementById('quantity').addEventListener('input', calculateTotal);
-            document.getElementById('unitPrice').addEventListener('input', calculateTotal);
+            setupEventListeners();
+            loadSampleData();
         }
 
-        function calculateTotal() {
-            const quantity = parseFloat(document.getElementById('quantity').value) || 0;
-            const unitPrice = parseFloat(document.getElementById('unitPrice').value) || 0;
-            const total = quantity * unitPrice;
-            document.getElementById('totalAmount').value = total;
+        // Setup event listeners
+        function setupEventListeners() {
+            // Auth modals
+            document.getElementById('showRegister').addEventListener('click', showRegisterModal);
+            document.getElementById('showLogin').addEventListener('click', showLoginModal);
+            document.getElementById('loginForm').addEventListener('submit', handleLogin);
+            document.getElementById('registerForm').addEventListener('submit', handleRegister);
+            document.getElementById('logoutBtn').addEventListener('click', handleLogout);
+
+            // Sidebar
+            document.getElementById('sidebarToggle').addEventListener('click', toggleSidebar);
+            document.querySelectorAll('.sidebar-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => switchSection(e.target.dataset.section));
+            });
+
+            // Modals
+            document.getElementById('addSaleBtn').addEventListener('click', showAddSaleModal);
+            document.getElementById('addProductBtn').addEventListener('click', showAddProductModal);
+            document.getElementById('closeSaleModal').addEventListener('click', hideAddSaleModal);
+            document.getElementById('closeProductModal').addEventListener('click', hideAddProductModal);
+            document.getElementById('cancelSale').addEventListener('click', hideAddSaleModal);
+            document.getElementById('cancelProduct').addEventListener('click', hideAddProductModal);
+
+            // Forms
+            document.getElementById('addSaleForm').addEventListener('submit', handleAddSale);
+            document.getElementById('addProductForm').addEventListener('submit', handleAddProduct);
+
+            // Sale form calculations
+            document.getElementById('saleProduct').addEventListener('change', updateSalePrice);
+            document.getElementById('saleQuantity').addEventListener('input', calculateSaleTotal);
+
+            // Reports
+            document.getElementById('generateReportBtn').addEventListener('click', generateReport);
+            document.getElementById('exportExcelBtn').addEventListener('click', exportToExcel);
+            document.getElementById('exportPdfBtn').addEventListener('click', exportToPdf);
+
+            // Set default date to today
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('saleDate').value = today;
         }
 
-        // Authentication functions
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
+        // Load sample data
+        function loadSampleData() {
+            if (productsData.length === 0) {
+                productsData = [
+                    { id: 1, name: 'Laptop Gaming', price: 15000000, stock: 5 },
+                    { id: 2, name: 'Mouse Wireless', price: 250000, stock: 20 },
+                    { id: 3, name: 'Keyboard Mechanical', price: 800000, stock: 15 },
+                    { id: 4, name: 'Monitor 24 inch', price: 2500000, stock: 8 }
+                ];
+                localStorage.setItem('productsData', JSON.stringify(productsData));
+            }
+
+            if (salesData.length === 0) {
+                const today = new Date().toISOString().split('T')[0];
+                salesData = [
+                    { id: 1, date: today, productId: 1, productName: 'Laptop Gaming', price: 15000000, quantity: 1, total: 15000000 },
+                    { id: 2, date: today, productId: 2, productName: 'Mouse Wireless', price: 250000, quantity: 2, total: 500000 }
+                ];
+                localStorage.setItem('salesData', JSON.stringify(salesData));
+            }
+        }
+
+        // Auth functions
+        function showAuthModal() {
+            document.getElementById('authModal').classList.remove('hidden');
+            document.getElementById('registerModal').classList.add('hidden');
+        }
+
+        function showRegisterModal() {
+            document.getElementById('authModal').classList.add('hidden');
+            document.getElementById('registerModal').classList.remove('hidden');
+        }
+
+        function showLoginModal() {
+            document.getElementById('registerModal').classList.add('hidden');
+            document.getElementById('authModal').classList.remove('hidden');
+        }
+
+        function handleLogin(e) {
             e.preventDefault();
-            
             const email = document.getElementById('loginEmail').value;
             const password = document.getElementById('loginPassword').value;
-            
+
+            // Simple validation (in real app, this would be server-side)
+            const users = JSON.parse(localStorage.getItem('users')) || [];
             const user = users.find(u => u.email === email && u.password === password);
-            
+
             if (user) {
                 currentUser = user;
-                localStorage.setItem('currentUser_sales', JSON.stringify(user));
+                localStorage.setItem('currentUser', JSON.stringify(user));
                 showMainApp();
             } else {
-                showMessage('Email atau password salah!', 'error');
+                showToast('Email atau password salah!', 'error');
             }
-        });
+        }
 
-        document.getElementById('registerForm').addEventListener('submit', function(e) {
+        function handleRegister(e) {
             e.preventDefault();
-            
             const name = document.getElementById('registerName').value;
             const email = document.getElementById('registerEmail').value;
             const password = document.getElementById('registerPassword').value;
-            const role = document.getElementById('registerRole').value;
+
+            const users = JSON.parse(localStorage.getItem('users')) || [];
             
             if (users.find(u => u.email === email)) {
-                showMessage('Email sudah terdaftar!', 'error');
+                showToast('Email sudah terdaftar!', 'error');
                 return;
             }
-            
-            const newUser = {
-                id: users.length + 1,
-                name,
-                email,
-                password,
-                role
-            };
-            
+
+            const newUser = { id: Date.now(), name, email, password };
             users.push(newUser);
-            localStorage.setItem('users_sales', JSON.stringify(users));
-            
-            showMessage('Registrasi berhasil! Silakan login.', 'success');
-            toggleAuthForm();
-        });
+            localStorage.setItem('users', JSON.stringify(users));
 
-        document.getElementById('toggleAuth').addEventListener('click', toggleAuthForm);
+            currentUser = newUser;
+            localStorage.setItem('currentUser', JSON.stringify(newUser));
+            showMainApp();
+            showToast('Akun berhasil dibuat!', 'success');
+        }
 
-        function toggleAuthForm() {
-            const loginForm = document.getElementById('loginForm');
-            const registerForm = document.getElementById('registerForm');
-            const toggleBtn = document.getElementById('toggleAuth');
-            
-            if (loginForm.classList.contains('hidden')) {
-                loginForm.classList.remove('hidden');
-                registerForm.classList.add('hidden');
-                toggleBtn.textContent = 'Belum punya akun? Daftar di sini';
-            } else {
-                loginForm.classList.add('hidden');
-                registerForm.classList.remove('hidden');
-                toggleBtn.textContent = 'Sudah punya akun? Login di sini';
-            }
+        function handleLogout() {
+            currentUser = null;
+            localStorage.removeItem('currentUser');
+            document.getElementById('mainApp').classList.add('hidden');
+            showAuthModal();
         }
 
         function showMainApp() {
             document.getElementById('authModal').classList.add('hidden');
+            document.getElementById('registerModal').classList.add('hidden');
             document.getElementById('mainApp').classList.remove('hidden');
             document.getElementById('userWelcome').textContent = `Selamat datang, ${currentUser.name}!`;
-            
-            // Show/hide admin-only sections based on user role
-            const reportsTab = document.getElementById('reportsTab');
-            const adminSection = document.getElementById('adminSection');
-            
-            if (currentUser.role === 'admin') {
-                // Show admin features
-                if (reportsTab) {
-                    reportsTab.style.display = 'block';
-                    reportsTab.parentElement.style.display = 'block';
-                }
-                if (adminSection) {
-                    adminSection.style.display = 'block';
-                }
-                loadUsersList();
-            } else {
-                // Hide admin features for regular users
-                if (reportsTab) {
-                    reportsTab.style.display = 'none';
-                    reportsTab.parentElement.style.display = 'none';
-                }
-                if (adminSection) {
-                    adminSection.style.display = 'none';
-                }
-            }
-            
             updateDashboard();
-            loadSalesHistory();
+            updateProductsTable();
+            updateSalesTable();
+            updateProductSelect();
         }
 
-        // Logout function
-        document.getElementById('logoutBtn').addEventListener('click', function() {
-            currentUser = null;
-            localStorage.removeItem('currentUser_sales');
-            document.getElementById('mainApp').classList.add('hidden');
-            document.getElementById('authModal').classList.remove('hidden');
-        });
+        // Navigation functions
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('open');
+        }
 
-        // Tab navigation
-        document.querySelectorAll('.sidebar-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const tabName = this.dataset.tab;
-                showTab(tabName);
-            });
-        });
-
-        function showTab(tabName) {
-            // Update sidebar buttons
-            document.querySelectorAll('.sidebar-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
+        function switchSection(section) {
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(s => s.classList.add('hidden'));
             
-            document.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
+            // Show selected section
+            document.getElementById(section + 'Section').classList.remove('hidden');
+            
+            // Update sidebar active state
+            document.querySelectorAll('.sidebar-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelector(`[data-section="${section}"]`).classList.add('active');
             
             // Update page title
             const titles = {
-                'dashboard': 'Dashboard',
-                'sales': 'Tambah Data Penjualan',
-                'history': 'Kelola Data Penjualan',
-                'reports': 'Laporan & Export',
-                'users': 'Kelola User',
-                'generate': 'Generate Data'
+                dashboard: 'Dashboard',
+                sales: 'Data Penjualan',
+                products: 'Daftar Produk',
+                reports: 'Laporan Penjualan'
             };
-            document.getElementById('pageTitle').textContent = titles[tabName] || 'Dashboard';
+            document.getElementById('pageTitle').textContent = titles[section];
             
-            // Show/hide content
-            document.querySelectorAll('.tab-content').forEach(content => {
-                content.classList.add('hidden');
-            });
+            currentSection = section;
             
-            document.getElementById(tabName).classList.remove('hidden');
-            
-            if (tabName === 'reports') {
-                updateReports();
+            // Close sidebar on mobile
+            if (window.innerWidth < 1024) {
+                document.getElementById('sidebar').classList.remove('open');
             }
         }
 
-        // CRUD Variables
-        let editingId = null;
-        let deleteId = null;
+        // Modal functions
+        function showAddSaleModal() {
+            document.getElementById('addSaleModal').classList.remove('hidden');
+            updateProductSelect();
+            // Set today's date as default
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('saleDate').value = today;
+        }
 
-        // Sales form
-        document.getElementById('salesForm').addEventListener('submit', function(e) {
+        function hideAddSaleModal() {
+            document.getElementById('addSaleModal').classList.add('hidden');
+            document.getElementById('addSaleForm').reset();
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('saleDate').value = today;
+        }
+
+        function showAddProductModal() {
+            document.getElementById('addProductModal').classList.remove('hidden');
+        }
+
+        function hideAddProductModal() {
+            document.getElementById('addProductModal').classList.add('hidden');
+            document.getElementById('addProductForm').reset();
+        }
+
+        // Product functions
+        function handleAddProduct(e) {
             e.preventDefault();
-            
-            const editId = document.getElementById('editId').value;
-            
-            const formData = {
-                id: editId ? parseInt(editId) : Date.now(),
-                customerName: document.getElementById('customerName').value,
-                customerPhone: document.getElementById('customerPhone').value,
-                customerAddress: document.getElementById('customerAddress').value,
-                productName: document.getElementById('productName').value,
-                quantity: parseInt(document.getElementById('quantity').value),
-                unitPrice: parseFloat(document.getElementById('unitPrice').value),
-                totalAmount: parseFloat(document.getElementById('totalAmount').value),
-                paymentMethod: document.getElementById('paymentMethod').value,
-                status: document.getElementById('salesStatus').value,
-                description: document.getElementById('salesDescription').value,
-                salesPerson: document.getElementById('salesPerson').value,
-                createdAt: editId ? sales.find(s => s.id == editId).createdAt : new Date().toISOString(),
-                createdBy: editId ? sales.find(s => s.id == editId).createdBy : currentUser.name,
-                updatedAt: editId ? new Date().toISOString() : null,
-                updatedBy: editId ? currentUser.name : null
+            const name = document.getElementById('productName').value;
+            const price = parseInt(document.getElementById('productPrice').value);
+            const stock = parseInt(document.getElementById('productStock').value);
+
+            const newProduct = {
+                id: Date.now(),
+                name,
+                price,
+                stock
             };
+
+            productsData.push(newProduct);
+            localStorage.setItem('productsData', JSON.stringify(productsData));
             
-            if (editId) {
-                // Update existing sale
-                const index = sales.findIndex(s => s.id == editId);
-                if (index !== -1) {
-                    sales[index] = formData;
-                    showSuccessModal('Data penjualan berhasil diperbarui!');
-                }
-            } else {
-                // Add new sale
-                sales.push(formData);
-                showSuccessModal('Data penjualan berhasil disimpan!');
-            }
-            
-            localStorage.setItem('sales', JSON.stringify(sales));
-            
-            // Reset form
-            resetForm();
-            
-            // Update dashboard and history
+            updateProductsTable();
+            updateProductSelect();
             updateDashboard();
-            loadSalesHistory();
-        });
-
-        // Cancel edit
-        document.getElementById('cancelEdit').addEventListener('click', function() {
-            resetForm();
-        });
-
-        // Reset form function
-        function resetForm() {
-            document.getElementById('salesForm').reset();
-            document.getElementById('editId').value = '';
-            document.getElementById('formTitle').textContent = 'Tambah Data Penjualan';
-            document.getElementById('submitText').textContent = 'Simpan Penjualan';
-            document.getElementById('cancelEdit').classList.add('hidden');
-            editingId = null;
+            hideAddProductModal();
+            showToast('Produk berhasil ditambahkan!', 'success');
         }
 
-        // Edit sale function
-        function editSale(id) {
-            const sale = sales.find(s => s.id == id);
-            if (!sale) return;
+        function updateProductsTable() {
+            const tbody = document.getElementById('productsTable');
             
-            // Fill form with sale data
-            document.getElementById('editId').value = sale.id;
-            document.getElementById('customerName').value = sale.customerName;
-            document.getElementById('customerPhone').value = sale.customerPhone;
-            document.getElementById('customerAddress').value = sale.customerAddress;
-            document.getElementById('productName').value = sale.productName;
-            document.getElementById('quantity').value = sale.quantity;
-            document.getElementById('unitPrice').value = sale.unitPrice;
-            document.getElementById('totalAmount').value = sale.totalAmount;
-            document.getElementById('paymentMethod').value = sale.paymentMethod;
-            document.getElementById('salesStatus').value = sale.status;
-            document.getElementById('salesDescription').value = sale.description || '';
-            document.getElementById('salesPerson').value = sale.salesPerson || '';
-            
-            // Update form UI
-            document.getElementById('formTitle').textContent = 'Edit Data Penjualan';
-            document.getElementById('submitText').textContent = 'Update Penjualan';
-            document.getElementById('cancelEdit').classList.remove('hidden');
-            
-            // Switch to sales tab
-            showTab('sales');
-            editingId = id;
-        }
-
-        // Delete sale function
-        function deleteSale(id) {
-            deleteId = id;
-            document.getElementById('deleteModal').classList.remove('hidden');
-        }
-
-        // Delete modal handlers
-        document.getElementById('cancelDelete').addEventListener('click', function() {
-            document.getElementById('deleteModal').classList.add('hidden');
-            deleteId = null;
-        });
-
-        document.getElementById('confirmDelete').addEventListener('click', function() {
-            if (deleteId) {
-                sales = sales.filter(s => s.id != deleteId);
-                localStorage.setItem('sales', JSON.stringify(sales));
-                
-                showSuccessModal('Data penjualan berhasil dihapus!');
-                updateDashboard();
-                loadSalesHistory();
-                
-                document.getElementById('deleteModal').classList.add('hidden');
-                deleteId = null;
+            if (productsData.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="4" class="text-center py-8 text-gray-500">Belum ada data produk</td></tr>';
+                return;
             }
-        });
+
+            tbody.innerHTML = productsData.map(product => `
+                <tr class="border-b border-gray-100 hover:bg-gray-50">
+                    <td class="py-3 px-4">${product.name}</td>
+                    <td class="py-3 px-4">Rp ${product.price.toLocaleString('id-ID')}</td>
+                    <td class="py-3 px-4">${product.stock}</td>
+                    <td class="py-3 px-4">
+                        <button onclick="deleteProduct(${product.id})" class="text-red-600 hover:text-red-800 transition-colors duration-200">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function deleteProduct(id) {
+            if (confirm('Apakah Anda yakin ingin menghapus produk ini?')) {
+                productsData = productsData.filter(p => p.id !== id);
+                localStorage.setItem('productsData', JSON.stringify(productsData));
+                updateProductsTable();
+                updateProductSelect();
+                updateDashboard();
+                showToast('Produk berhasil dihapus!', 'success');
+            }
+        }
+
+        function updateProductSelect() {
+            const select = document.getElementById('saleProduct');
+            select.innerHTML = '<option value="">Pilih Produk</option>';
+            
+            productsData.forEach(product => {
+                if (product.stock > 0) {
+                    select.innerHTML += `<option value="${product.id}" data-price="${product.price}">${product.name} (Stok: ${product.stock})</option>`;
+                }
+            });
+        }
+
+        // Sale functions
+        function updateSalePrice() {
+            const select = document.getElementById('saleProduct');
+            const priceInput = document.getElementById('salePrice');
+            const selectedOption = select.options[select.selectedIndex];
+            
+            if (selectedOption.value) {
+                priceInput.value = selectedOption.dataset.price;
+                calculateSaleTotal();
+            } else {
+                priceInput.value = '';
+                document.getElementById('saleTotal').value = '';
+            }
+        }
+
+        function calculateSaleTotal() {
+            const price = parseInt(document.getElementById('salePrice').value) || 0;
+            const quantity = parseInt(document.getElementById('saleQuantity').value) || 0;
+            const total = price * quantity;
+            document.getElementById('saleTotal').value = total;
+        }
+
+        function handleAddSale(e) {
+            e.preventDefault();
+            const date = document.getElementById('saleDate').value;
+            const productId = parseInt(document.getElementById('saleProduct').value);
+            const price = parseInt(document.getElementById('salePrice').value);
+            const quantity = parseInt(document.getElementById('saleQuantity').value);
+            const total = parseInt(document.getElementById('saleTotal').value);
+
+            const product = productsData.find(p => p.id === productId);
+            
+            if (!product) {
+                showToast('Produk tidak ditemukan!', 'error');
+                return;
+            }
+
+            if (product.stock < quantity) {
+                showToast('Stok tidak mencukupi!', 'error');
+                return;
+            }
+
+            const newSale = {
+                id: Date.now(),
+                date,
+                productId,
+                productName: product.name,
+                price,
+                quantity,
+                total
+            };
+
+            salesData.push(newSale);
+            localStorage.setItem('salesData', JSON.stringify(salesData));
+
+            // Update product stock
+            product.stock -= quantity;
+            localStorage.setItem('productsData', JSON.stringify(productsData));
+
+            updateSalesTable();
+            updateProductsTable();
+            updateProductSelect();
+            updateDashboard();
+            hideAddSaleModal();
+            showToast('Penjualan berhasil ditambahkan!', 'success');
+        }
+
+        function updateSalesTable() {
+            const tbody = document.getElementById('salesTable');
+            
+            if (salesData.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="6" class="text-center py-8 text-gray-500">Belum ada data penjualan</td></tr>';
+                return;
+            }
+
+            tbody.innerHTML = salesData.map(sale => `
+                <tr class="border-b border-gray-100 hover:bg-gray-50">
+                    <td class="py-3 px-4">${new Date(sale.date).toLocaleDateString('id-ID')}</td>
+                    <td class="py-3 px-4">${sale.productName}</td>
+                    <td class="py-3 px-4">Rp ${sale.price.toLocaleString('id-ID')}</td>
+                    <td class="py-3 px-4">${sale.quantity}</td>
+                    <td class="py-3 px-4">Rp ${sale.total.toLocaleString('id-ID')}</td>
+                    <td class="py-3 px-4">
+                        <button onclick="deleteSale(${sale.id})" class="text-red-600 hover:text-red-800 transition-colors duration-200">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function deleteSale(id) {
+            if (confirm('Apakah Anda yakin ingin menghapus data penjualan ini?')) {
+                const sale = salesData.find(s => s.id === id);
+                if (sale) {
+                    // Restore product stock
+                    const product = productsData.find(p => p.id === sale.productId);
+                    if (product) {
+                        product.stock += sale.quantity;
+                        localStorage.setItem('productsData', JSON.stringify(productsData));
+                    }
+                }
+
+                salesData = salesData.filter(s => s.id !== id);
+                localStorage.setItem('salesData', JSON.stringify(salesData));
+                updateSalesTable();
+                updateProductsTable();
+                updateProductSelect();
+                updateDashboard();
+                showToast('Data penjualan berhasil dihapus!', 'success');
+            }
+        }
 
         // Dashboard functions
         function updateDashboard() {
-            const totalSales = sales.length;
-            const paidSales = sales.filter(sale => sale.status === 'paid').length;
-            const debtSales = sales.filter(sale => sale.status === 'hutang').length;
-            const overdueSales = sales.filter(sale => sale.status === 'overdue').length;
-            
+            const totalSales = salesData.length;
+            const totalRevenue = salesData.reduce((sum, sale) => sum + sale.total, 0);
+            const totalProducts = productsData.length;
+            const today = new Date().toISOString().split('T')[0];
+            const todaySales = salesData.filter(sale => sale.date === today).length;
+
             document.getElementById('totalSales').textContent = totalSales;
-            document.getElementById('paidSales').textContent = paidSales;
-            document.getElementById('debtSales').textContent = debtSales;
-            document.getElementById('overdueSales').textContent = overdueSales;
-            
-            // Show recent sales
-            const recentSales = sales.slice(-5).reverse();
-            const recentSalesContainer = document.getElementById('recentSales');
+            document.getElementById('totalRevenue').textContent = `Rp ${totalRevenue.toLocaleString('id-ID')}`;
+            document.getElementById('totalProducts').textContent = totalProducts;
+            document.getElementById('todaySales').textContent = todaySales;
+
+            updateRecentSalesTable();
+        }
+
+        function updateRecentSalesTable() {
+            const tbody = document.getElementById('recentSalesTable');
+            const recentSales = salesData.slice(-5).reverse();
             
             if (recentSales.length === 0) {
-                recentSalesContainer.innerHTML = '<p class="text-gray-500 text-center py-8">Belum ada data penjualan</p>';
-            } else {
-                recentSalesContainer.innerHTML = recentSales.map(sale => `
-                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center p-4 bg-gray-50 rounded-lg space-y-2 sm:space-y-0">
-                        <div class="flex-1">
-                            <h4 class="font-semibold text-gray-800">${sale.customerName}</h4>
-                            <p class="text-sm text-gray-600">${sale.productName} (${sale.quantity}x)</p>
-                            <p class="text-sm text-gray-500">${sale.paymentMethod}</p>
-                        </div>
-                        <div class="text-right">
-                            <p class="font-semibold text-gray-800">Rp ${sale.totalAmount.toLocaleString('id-ID')}</p>
-                            <span class="inline-block px-2 py-1 text-xs rounded-full ${getStatusColor(sale.status)}">${getStatusText(sale.status)}</span>
-                        </div>
-                    </div>
-                `).join('');
+                tbody.innerHTML = '<tr><td colspan="4" class="text-center py-8 text-gray-500">Belum ada data penjualan</td></tr>';
+                return;
             }
+
+            tbody.innerHTML = recentSales.map(sale => `
+                <tr class="border-b border-gray-100 hover:bg-gray-50">
+                    <td class="py-3 px-4">${new Date(sale.date).toLocaleDateString('id-ID')}</td>
+                    <td class="py-3 px-4">${sale.productName}</td>
+                    <td class="py-3 px-4">${sale.quantity}</td>
+                    <td class="py-3 px-4">Rp ${sale.total.toLocaleString('id-ID')}</td>
+                </tr>
+            `).join('');
         }
 
-        // History functions
-        function loadSalesHistory() {
-            const salesList = document.getElementById('salesList');
-            let filteredSales = [...sales];
-            
-            // Apply filters
-            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-            const statusFilter = document.getElementById('statusFilter').value;
-            
-            if (searchTerm) {
-                filteredSales = filteredSales.filter(sale => 
-                    sale.customerName.toLowerCase().includes(searchTerm)
-                );
-            }
-            
-            if (statusFilter) {
-                filteredSales = filteredSales.filter(sale => sale.status === statusFilter);
-            }
-            
-            if (filteredSales.length === 0) {
-                salesList.innerHTML = '<p class="text-gray-500 text-center py-8">Tidak ada data yang ditemukan</p>';
-            } else {
-                salesList.innerHTML = filteredSales.reverse().map(sale => `
-                    <div class="bg-white rounded-lg p-4 space-y-3 shadow-sm border border-gray-200">
-                        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center space-y-2 sm:space-y-0">
-                            <div class="flex-1">
-                                <h4 class="font-semibold text-gray-800">${sale.customerName}</h4>
-                                <p class="text-sm text-gray-600">${sale.customerPhone}</p>
-                                <p class="text-sm text-gray-500">${sale.customerAddress}</p>
-                            </div>
-                            <div class="text-right">
-                                <p class="font-semibold text-lg text-gray-800">Rp ${sale.totalAmount.toLocaleString('id-ID')}</p>
-                                <span class="inline-block px-3 py-1 text-sm rounded-full ${getStatusColor(sale.status)}">${getStatusText(sale.status)}</span>
-                            </div>
-                        </div>
-                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-sm text-gray-600">
-                            <div><strong>Produk:</strong> ${sale.productName}</div>
-                            <div><strong>Jumlah:</strong> ${sale.quantity} x Rp ${sale.unitPrice.toLocaleString('id-ID')}</div>
-                            <div><strong>Metode:</strong> ${sale.paymentMethod}</div>
-                        </div>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-gray-600">
-                            <div><strong>Sales:</strong> ${sale.salesPerson || '-'}</div>
-                            <div><strong>Dibuat:</strong> ${new Date(sale.createdAt).toLocaleDateString('id-ID')}</div>
-                        </div>
-                        ${sale.description ? `<div class="text-sm text-gray-600"><strong>Keterangan:</strong> ${sale.description}</div>` : ''}
-                        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center space-y-2 sm:space-y-0">
-                            <div class="text-xs text-gray-500">
-                                Dibuat oleh: ${sale.createdBy}
-                                ${sale.updatedAt ? `<br>Diperbarui: ${new Date(sale.updatedAt).toLocaleDateString('id-ID')} oleh ${sale.updatedBy}` : ''}
-                            </div>
-                            <div class="flex space-x-2 w-full sm:w-auto">
-                                <button onclick="editSale(${sale.id})" class="bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded text-sm transition-colors flex-1 sm:flex-none">
-                                    <i class="fas fa-edit mr-1"></i>Edit
-                                </button>
-                                <button onclick="deleteSale(${sale.id})" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-sm transition-colors flex-1 sm:flex-none">
-                                    <i class="fas fa-trash mr-1"></i>Hapus
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                `).join('');
-            }
-        }
+        // Report functions
+        function generateReport() {
+            const startDate = document.getElementById('reportStartDate').value;
+            const endDate = document.getElementById('reportEndDate').value;
 
-        // Search and filter
-        document.getElementById('searchInput').addEventListener('input', loadSalesHistory);
-        document.getElementById('statusFilter').addEventListener('change', loadSalesHistory);
+            if (!startDate || !endDate) {
+                showToast('Pilih tanggal mulai dan akhir!', 'error');
+                return;
+            }
 
-        // Reports functions
-        function updateReports() {
-            const currentMonth = new Date().getMonth();
-            const currentYear = new Date().getFullYear();
-            
-            const monthlySales = sales.filter(sale => {
-                const saleDate = new Date(sale.createdAt);
-                return saleDate.getMonth() === currentMonth && saleDate.getFullYear() === currentYear;
+            const filteredSales = salesData.filter(sale => {
+                return sale.date >= startDate && sale.date <= endDate;
             });
-            
-            const totalAmount = monthlySales.reduce((sum, sale) => sum + sale.totalAmount, 0);
-            const paidAmount = monthlySales.filter(sale => sale.status === 'paid').reduce((sum, sale) => sum + sale.totalAmount, 0);
-            const unpaidAmount = totalAmount - paidAmount;
-            
-            document.getElementById('monthlyTotal').textContent = `Rp ${totalAmount.toLocaleString('id-ID')}`;
-            document.getElementById('monthlyPaid').textContent = `Rp ${paidAmount.toLocaleString('id-ID')}`;
-            document.getElementById('monthlyUnpaid').textContent = `Rp ${unpaidAmount.toLocaleString('id-ID')}`;
-            
-            // Payment method counts
-            const cashCount = sales.filter(sale => sale.paymentMethod === 'tunai').length;
-            const transferCount = sales.filter(sale => sale.paymentMethod === 'transfer').length;
-            const creditCount = sales.filter(sale => sale.paymentMethod === 'kredit').length;
-            
-            document.getElementById('cashCount').textContent = cashCount;
-            document.getElementById('transferCount').textContent = transferCount;
-            document.getElementById('creditCount').textContent = creditCount;
+
+            const reportResults = document.getElementById('reportResults');
+            const reportContent = document.getElementById('reportContent');
+
+            if (filteredSales.length === 0) {
+                reportContent.innerHTML = '<p class="text-gray-500 text-center py-4">Tidak ada data penjualan pada periode tersebut</p>';
+            } else {
+                const totalRevenue = filteredSales.reduce((sum, sale) => sum + sale.total, 0);
+                const totalQuantity = filteredSales.reduce((sum, sale) => sum + sale.quantity, 0);
+
+                reportContent.innerHTML = `
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                        <div class="bg-blue-50 p-4 rounded-lg">
+                            <h5 class="font-semibold text-blue-800">Total Transaksi</h5>
+                            <p class="text-2xl font-bold text-blue-600">${filteredSales.length}</p>
+                        </div>
+                        <div class="bg-green-50 p-4 rounded-lg">
+                            <h5 class="font-semibold text-green-800">Total Pendapatan</h5>
+                            <p class="text-2xl font-bold text-green-600">Rp ${totalRevenue.toLocaleString('id-ID')}</p>
+                        </div>
+                        <div class="bg-purple-50 p-4 rounded-lg">
+                            <h5 class="font-semibold text-purple-800">Total Item Terjual</h5>
+                            <p class="text-2xl font-bold text-purple-600">${totalQuantity}</p>
+                        </div>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full">
+                            <thead>
+                                <tr class="border-b border-gray-200">
+                                    <th class="text-left py-3 px-4 font-semibold text-gray-700">Tanggal</th>
+                                    <th class="text-left py-3 px-4 font-semibold text-gray-700">Produk</th>
+                                    <th class="text-left py-3 px-4 font-semibold text-gray-700">Jumlah</th>
+                                    <th class="text-left py-3 px-4 font-semibold text-gray-700">Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${filteredSales.map(sale => `
+                                    <tr class="border-b border-gray-100">
+                                        <td class="py-3 px-4">${new Date(sale.date).toLocaleDateString('id-ID')}</td>
+                                        <td class="py-3 px-4">${sale.productName}</td>
+                                        <td class="py-3 px-4">${sale.quantity}</td>
+                                        <td class="py-3 px-4">Rp ${sale.total.toLocaleString('id-ID')}</td>
+                                    </tr>
+                                `).join('')}
+                            </tbody>
+                        </table>
+                    </div>
+                `;
+            }
+
+            reportResults.classList.remove('hidden');
         }
 
         // Export functions
-        document.getElementById('exportExcel').addEventListener('click', function() {
-            const ws = XLSX.utils.json_to_sheet(sales.map(sale => ({
-                'Nama Pembeli': sale.customerName,
-                'No. Telepon': sale.customerPhone,
-                'Alamat': sale.customerAddress,
-                'Nama Produk': sale.productName,
+        function exportToExcel() {
+            if (salesData.length === 0) {
+                showToast('Tidak ada data untuk diekspor!', 'error');
+                return;
+            }
+
+            const ws = XLSX.utils.json_to_sheet(salesData.map(sale => ({
+                'Tanggal': new Date(sale.date).toLocaleDateString('id-ID'),
+                'Produk': sale.productName,
+                'Harga': sale.price,
                 'Jumlah': sale.quantity,
-                'Harga Satuan': sale.unitPrice,
-                'Total Harga': sale.totalAmount,
-                'Metode Pembayaran': sale.paymentMethod,
-                'Status': sale.status,
-                'Sales Person': sale.salesPerson || '',
-                'Keterangan': sale.description || '',
-                'Tanggal Dibuat': new Date(sale.createdAt).toLocaleDateString('id-ID'),
-                'Dibuat Oleh': sale.createdBy
+                'Total': sale.total
             })));
-            
+
             const wb = XLSX.utils.book_new();
             XLSX.utils.book_append_sheet(wb, ws, 'Data Penjualan');
-            XLSX.writeFile(wb, `data-penjualan-${new Date().toISOString().split('T')[0]}.xlsx`);
-        });
+            XLSX.writeFile(wb, 'data-penjualan.xlsx');
+            showToast('Data berhasil diekspor ke Excel!', 'success');
+        }
 
-        // Export JSON Data for sync - IMPROVED FOR MOBILE
-        document.getElementById('exportJSON').addEventListener('click', function() {
-            const exportData = {
-                sales: sales,
-                users: users.filter(u => u.id > 2), // Don't export default users
-                exportDate: new Date().toISOString(),
-                exportBy: currentUser.name,
-                exportFrom: 'Sistem Penjualan v2.0',
-                deviceInfo: navigator.userAgent.includes('Mobile') ? 'Mobile Device' : 'Desktop/Laptop',
-                totalSales: sales.length,
-                totalUsers: users.filter(u => u.id > 2).length,
-                version: '2.0'
-            };
-            
-            const dataStr = JSON.stringify(exportData, null, 2);
-            const fileName = `sistem-penjualan-sync-${new Date().toISOString().split('T')[0]}-${Date.now()}.json`;
-            
-            // Check if device is mobile
-            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-            
-            if (isMobile) {
-                // For mobile devices, show options modal
-                showMobileExportModal(dataStr, fileName);
-            } else {
-                // Desktop: use traditional download
-                downloadFile(dataStr, fileName);
-                showSuccessModal(`✅ Data berhasil di-export!\n\n📊 ${sales.length} penjualan & ${users.filter(u => u.id > 2).length} user\n📱 File siap dibagikan ke device lain\n🔄 Gunakan tombol Import di device tujuan`);
+        function exportToPdf() {
+            if (salesData.length === 0) {
+                showToast('Tidak ada data untuk diekspor!', 'error');
+                return;
             }
-        });
-        
-        function downloadFile(dataStr, fileName) {
-            const dataBlob = new Blob([dataStr], { type: 'application/json' });
-            const link = document.createElement('a');
-            link.href = URL.createObjectURL(dataBlob);
-            link.download = fileName;
-            
-            // For mobile browsers, add target="_blank" and force click
-            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-                link.target = '_blank';
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-                
-                // Show additional instructions for mobile
-                setTimeout(() => {
-                    showSuccessModal(`📱 MOBILE DOWNLOAD:\n\n✅ File JSON sedang diunduh\n📁 Cek folder Download di HP\n📤 Bagikan file via WhatsApp ke admin\n\n📋 Nama file:\n${fileName}\n\n💡 Jika tidak terunduh, gunakan browser Chrome/Firefox`);
-                }, 1000);
-            } else {
-                link.click();
-            }
-            
-            // Clean up
-            setTimeout(() => URL.revokeObjectURL(link.href), 1000);
-        }
-        
-        function showMobileExportModal(dataStr, fileName) {
-            // Create modal for mobile export
-            const modal = document.createElement('div');
-            modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4';
-            modal.innerHTML = `
-                <div class="bg-white rounded-2xl shadow-2xl w-full max-w-md max-h-96 overflow-hidden">
-                    <div class="p-4 border-b border-gray-200">
-                        <h3 class="text-lg font-semibold text-gray-800">📱 Export Data Mobile</h3>
-                        <p class="text-sm text-gray-600 mt-1">Pilih cara export yang sesuai</p>
-                    </div>
-                    <div class="p-4 space-y-3">
-                        <button id="mobileDownloadBtn" class="w-full bg-green-600 hover:bg-green-700 text-white px-4 py-3 rounded-lg transition-colors">
-                            <i class="fas fa-download mr-2"></i>Download File JSON
-                        </button>
-                        <button id="mobileShareBtn" class="w-full bg-green-600 hover:bg-green-700 text-white px-4 py-3 rounded-lg transition-colors">
-                            <i class="fas fa-share mr-2"></i>Share via WhatsApp/Email
-                        </button>
-                        <button id="mobileCopyBtn" class="w-full bg-purple-600 hover:bg-purple-700 text-white px-4 py-3 rounded-lg transition-colors">
-                            <i class="fas fa-copy mr-2"></i>Copy Data (Manual)
-                        </button>
-                        <div class="text-xs text-gray-500 bg-gray-50 p-3 rounded">
-                            <strong>💡 Tips:</strong><br>
-                            • Download: File tersimpan di folder Download<br>
-                            • Share: Langsung kirim via app yang tersedia<br>
-                            • Copy: Salin data manual, paste di notepad, save sebagai .json
-                        </div>
-                    </div>
-                    <div class="p-4 border-t border-gray-200">
-                        <button id="closeMobileModal" class="w-full bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg transition-colors">
-                            Tutup
-                        </button>
-                    </div>
-                </div>
-            `;
-            
-            document.body.appendChild(modal);
-            
-            // Download button
-            modal.querySelector('#mobileDownloadBtn').addEventListener('click', () => {
-                downloadFile(dataStr, fileName);
-                document.body.removeChild(modal);
-                showSuccessModal(`📱 File JSON sedang diunduh!\n\n📁 Cek folder Download di HP\n📤 Kirim file via WhatsApp ke admin\n\n📋 Nama file: ${fileName}`);
-            });
-            
-            // Share button (Web Share API)
-            modal.querySelector('#mobileShareBtn').addEventListener('click', () => {
-                if (navigator.share) {
-                    const file = new File([dataStr], fileName, { type: 'application/json' });
-                    navigator.share({
-                        title: 'Data Sistem Penjualan',
-                        text: `Export data penjualan - ${sales.length} penjualan, ${users.filter(u => u.id > 2).length} user`,
-                        files: [file]
-                    }).then(() => {
-                        document.body.removeChild(modal);
-                        showSuccessModal(`✅ Data berhasil di-share!\n\n📊 ${sales.length} penjualan & ${users.filter(u => u.id > 2).length} user\n📱 File siap dibagikan via WhatsApp/Email\n🔄 Gunakan tombol Import di device tujuan`);
-                    }).catch((error) => {
-                        // Fallback to download
-                        downloadFile(dataStr, fileName);
-                        document.body.removeChild(modal);
-                        showSuccessModal(`📱 Share tidak tersedia, file di-download!\n\n📁 Cek folder Download di HP\n📤 Kirim file manual via WhatsApp`);
-                    });
-                } else {
-                    // Fallback to download
-                    downloadFile(dataStr, fileName);
-                    document.body.removeChild(modal);
-                    showSuccessModal(`📱 Share tidak tersedia, file di-download!\n\n📁 Cek folder Download di HP\n📤 Kirim file manual via WhatsApp`);
-                }
-            });
-            
-            // Copy button
-            modal.querySelector('#mobileCopyBtn').addEventListener('click', () => {
-                navigator.clipboard.writeText(dataStr).then(() => {
-                    document.body.removeChild(modal);
-                    showSuccessModal(`📋 Data berhasil di-copy!\n\n📝 Cara manual:\n1. Buka aplikasi Notes/Notepad\n2. Paste data (Ctrl+V)\n3. Save sebagai file .json\n4. Kirim file via WhatsApp\n\n💾 Data sudah ada di clipboard`);
-                }).catch(() => {
-                    // Fallback: show data in textarea
-                    showDataTextarea(dataStr, fileName);
-                    document.body.removeChild(modal);
-                });
-            });
-            
-            // Close button
-            modal.querySelector('#closeMobileModal').addEventListener('click', () => {
-                document.body.removeChild(modal);
-            });
-        }
-        
-        function showDataTextarea(dataStr, fileName) {
-            const modal = document.createElement('div');
-            modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4';
-            modal.innerHTML = `
-                <div class="bg-white rounded-2xl shadow-2xl w-full max-w-lg max-h-96 overflow-hidden">
-                    <div class="p-4 border-b border-gray-200">
-                        <h3 class="text-lg font-semibold text-gray-800">📋 Copy Data Manual</h3>
-                        <p class="text-sm text-gray-600 mt-1">Salin semua data di bawah ini</p>
-                    </div>
-                    <div class="p-4">
-                        <textarea readonly class="w-full h-48 text-xs border border-gray-300 rounded p-2 font-mono" onclick="this.select()">${dataStr}</textarea>
-                        <div class="mt-3 text-xs text-gray-600 bg-yellow-50 p-3 rounded">
-                            <strong>📝 Langkah selanjutnya:</strong><br>
-                            1. Tap textarea → Select All → Copy<br>
-                            2. Buka Notes/Notepad → Paste<br>
-                            3. Save sebagai: <strong>${fileName}</strong><br>
-                            4. Kirim file via WhatsApp ke admin
-                        </div>
-                    </div>
-                    <div class="p-4 border-t border-gray-200">
-                        <button onclick="this.parentElement.parentElement.parentElement.remove()" class="w-full bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg transition-colors">
-                            Tutup
-                        </button>
-                    </div>
-                </div>
-            `;
-            
-            document.body.appendChild(modal);
-        }
 
-        // Import JSON Data for sync
-        document.getElementById('importJSON').addEventListener('click', function() {
-            document.getElementById('importFile').click();
-        });
-
-        // Import Excel Data for sync
-        document.getElementById('importExcel').addEventListener('click', function() {
-            document.getElementById('importExcelFile').click();
-        });
-
-        // Import PDF Data for sync
-        document.getElementById('importPDF').addEventListener('click', function() {
-            document.getElementById('importPDFFile').click();
-        });
-
-        document.getElementById('importFile').addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            if (!file) return;
-            
-            const reader = new FileReader();
-            reader.onload = function(event) {
-                try {
-                    const importData = JSON.parse(event.target.result);
-                    
-                    // Validate import data structure
-                    if (!importData.sales || !importData.users || !importData.version) {
-                        throw new Error('Format file tidak valid');
-                    }
-                    
-                    // Show detailed confirmation
-                    showImportConfirmation(importData);
-                    
-                } catch (error) {
-                    showSuccessModal(`❌ Error: File tidak valid atau rusak.\n\n🔍 Pastikan menggunakan file export yang benar dari sistem yang sama.\n\n📄 File harus berformat JSON dengan ekstensi .json`);
-                }
-            };
-            reader.readAsText(file);
-            
-            // Reset file input
-            e.target.value = '';
-        });
-
-        // PDF Import Handler
-        document.getElementById('importPDFFile').addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            if (!file) return;
-            
-            // Show loading message
-            showSuccessModal('📄 Sedang memproses file PDF...\n\n🔍 Mengekstrak teks dengan OCR\n⏳ Mohon tunggu sebentar');
-            
-            const reader = new FileReader();
-            reader.onload = function(event) {
-                try {
-                    const typedArray = new Uint8Array(event.target.result);
-                    
-                    // Configure PDF.js
-                    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
-                    
-                    // Load PDF
-                    pdfjsLib.getDocument(typedArray).promise.then(function(pdf) {
-                        extractTextFromPDF(pdf, file.name);
-                    }).catch(function(error) {
-                        throw new Error('PDF tidak dapat dibaca atau rusak');
-                    });
-                    
-                } catch (error) {
-                    showSuccessModal(`❌ Error: File PDF tidak valid atau rusak.\n\n🔍 Pastikan file PDF berisi data penjualan yang dapat dibaca.\n\n📄 Format yang didukung: .pdf\n\n⚠️ Error: ${error.message}`);
-                }
-            };
-            reader.readAsArrayBuffer(file);
-            
-            // Reset file input
-            e.target.value = '';
-        });
-
-        // Excel Import Handler
-        document.getElementById('importExcelFile').addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            if (!file) return;
-            
-            const reader = new FileReader();
-            reader.onload = function(event) {
-                try {
-                    const data = new Uint8Array(event.target.result);
-                    const workbook = XLSX.read(data, { type: 'array' });
-                    const sheetName = workbook.SheetNames[0];
-                    const worksheet = workbook.Sheets[sheetName];
-                    const jsonData = XLSX.utils.sheet_to_json(worksheet);
-                    
-                    if (jsonData.length === 0) {
-                        throw new Error('File Excel kosong atau tidak valid');
-                    }
-                    
-                    // Convert Excel data to system format
-                    const convertedData = convertExcelToSystemFormat(jsonData, file.name);
-                    showExcelImportConfirmation(convertedData);
-                    
-                } catch (error) {
-                    showSuccessModal(`❌ Error: File Excel tidak valid atau rusak.\n\n🔍 Pastikan file Excel berisi data penjualan dengan kolom yang sesuai.\n\n📄 Format yang didukung: .xlsx, .xls\n\n⚠️ Error: ${error.message}`);
-                }
-            };
-            reader.readAsArrayBuffer(file);
-            
-            // Reset file input
-            e.target.value = '';
-        });
-
-        // PDF Text Extraction Functions
-        async function extractTextFromPDF(pdf, fileName) {
-            let fullText = '';
-            const numPages = pdf.numPages;
-            
-            try {
-                // Extract text from all pages
-                for (let pageNum = 1; pageNum <= numPages; pageNum++) {
-                    const page = await pdf.getPage(pageNum);
-                    const textContent = await page.getTextContent();
-                    const pageText = textContent.items.map(item => item.str).join(' ');
-                    fullText += pageText + '\n';
-                }
-                
-                // Parse extracted text to data
-                const parsedData = parsePDFTextToData(fullText, fileName);
-                showPDFImportConfirmation(parsedData);
-                
-            } catch (error) {
-                showSuccessModal(`❌ Error: Gagal mengekstrak teks dari PDF.\n\n🔍 Pastikan PDF berisi teks yang dapat dibaca (bukan gambar scan).\n\n💡 Tips: Gunakan PDF yang dibuat dari aplikasi, bukan hasil scan.\n\n⚠️ Error: ${error.message}`);
-            }
-        }
-
-        function parsePDFTextToData(text, fileName) {
-            const lines = text.split('\n').filter(line => line.trim().length > 0);
-            const convertedSales = [];
-            let successCount = 0;
-            let errorCount = 0;
-            const errors = [];
-            
-            // Smart parsing patterns for different PDF formats
-            const patterns = {
-                // Pattern 1: Table format with clear separators
-                tablePattern: /(.+?)\s+(\d{10,15})\s+(.+?)\s+(Rp\s*[\d,\.]+|\d+)\s+(hutang|paid|overdue|lunas|belum lunas)\s*(.+)?/gi,
-                
-                // Pattern 2: Line by line format
-                linePattern: /nama[:\s]*(.+?)[\s\n]+(?:telepon|phone|hp)[:\s]*(\d{10,15})[\s\n]+(?:produk|product)[:\s]*(.+?)[\s\n]+(?:jumlah|amount|total)[:\s]*(Rp\s*[\d,\.]+|\d+)[\s\n]+(?:status)[:\s]*(hutang|paid|overdue|lunas|belum lunas)/gi,
-                
-                // Pattern 3: Structured format with labels
-                structuredPattern: /(?:nama pembeli|customer name)[:\s]*(.+?)[\s\n]+(?:no\.?\s*telepon|phone)[:\s]*(\d{10,15})[\s\n]+(?:produk|product)[:\s]*(.+?)[\s\n]+(?:total harga|amount)[:\s]*(Rp\s*[\d,\.]+|\d+)[\s\n]+(?:status)[:\s]*(hutang|paid|overdue|lunas|belum lunas)/gi
-            };
-            
-            let matchFound = false;
-            
-            // Try different parsing patterns
-            for (const [patternName, pattern] of Object.entries(patterns)) {
-                const matches = [...text.matchAll(pattern)];
-                
-                if (matches.length > 0) {
-                    matchFound = true;
-                    
-                    matches.forEach((match, index) => {
-                        try {
-                            const sale = createSaleFromPDFMatch(match, fileName, index, patternName);
-                            if (sale) {
-                                convertedSales.push(sale);
-                                successCount++;
-                            }
-                        } catch (error) {
-                            errorCount++;
-                            errors.push(`Pattern ${patternName} - Match ${index + 1}: ${error.message}`);
-                        }
-                    });
-                    
-                    break; // Use first successful pattern
-                }
-            }
-            
-            // If no patterns match, try manual line-by-line parsing
-            if (!matchFound) {
-                const manualData = parseManualPDFLines(lines, fileName);
-                convertedSales.push(...manualData.sales);
-                successCount = manualData.successCount;
-                errorCount = manualData.errorCount;
-                errors.push(...manualData.errors);
-            }
-            
-            return {
-                sales: convertedSales,
-                fileName: fileName,
-                totalLines: lines.length,
-                successCount: successCount,
-                errorCount: errorCount,
-                errors: errors,
-                importDate: new Date().toISOString(),
-                importBy: currentUser.name,
-                extractedText: text.substring(0, 500) + '...' // First 500 chars for preview
-            };
-        }
-
-        function createSaleFromPDFMatch(match, fileName, index, patternName) {
-            const [, name, phone, product, amount, status, description] = match;
-            
-            // Clean and validate data
-            const cleanName = name?.trim().replace(/[^\w\s]/g, '');
-            const cleanPhone = phone?.replace(/\D/g, '');
-            const cleanProduct = product?.trim();
-            const cleanAmount = parseFloat(amount?.replace(/[^\d]/g, '') || '0');
-            const cleanStatus = normalizeStatus(status?.toLowerCase());
-            const cleanDescription = description?.trim() || `Imported from PDF: ${fileName}`;
-            
-            if (!cleanName || !cleanPhone || !cleanProduct || cleanAmount <= 0) {
-                throw new Error(`Missing required data (Name: ${cleanName}, Phone: ${cleanPhone}, Product: ${cleanProduct}, Amount: ${cleanAmount})`);
-            }
-            
-            return {
-                id: Date.now() + Math.random() + index,
-                customerName: cleanName,
-                customerPhone: cleanPhone,
-                customerAddress: 'Alamat tidak tersedia',
-                productName: cleanProduct,
-                quantity: 1, // Default
-                unitPrice: cleanAmount,
-                totalAmount: cleanAmount,
-                paymentMethod: 'tunai', // Default
-                status: cleanStatus,
-                description: cleanDescription,
-                salesPerson: currentUser.name,
-                createdAt: new Date().toISOString(),
-                createdBy: `PDF Import by ${currentUser.name}`,
-                importedAt: new Date().toISOString(),
-                importedBy: currentUser.name,
-                importSource: 'PDF File',
-                importFileName: fileName,
-                pdfPattern: patternName,
-                pdfMatchIndex: index + 1
-            };
-        }
-
-        function parseManualPDFLines(lines, fileName) {
-            const salesData = [];
-            let successCount = 0;
-            let errorCount = 0;
-            const errors = [];
-            
-            // Look for potential data in lines
-            const potentialData = [];
-            let currentRecord = {};
-            
-            lines.forEach((line, index) => {
-                const lowerLine = line.toLowerCase();
-                
-                // Look for names (usually longer text without numbers)
-                if (!currentRecord.name && line.length > 5 && !/^\d+$/.test(line) && !/^rp/i.test(line)) {
-                    if (lowerLine.includes('nama') || (!lowerLine.includes('total') && !lowerLine.includes('jumlah'))) {
-                        currentRecord.name = line.replace(/nama[:\s]*/gi, '').trim();
-                    }
-                }
-                
-                // Look for phone numbers
-                const phoneMatch = line.match(/(\d{10,15})/);
-                if (phoneMatch && !currentRecord.phone) {
-                    currentRecord.phone = phoneMatch[1];
-                }
-                
-                // Look for products
-                if (!currentRecord.product && line.length > 3 && !phoneMatch && !/^rp/i.test(line)) {
-                    if (lowerLine.includes('produk') || lowerLine.includes('barang')) {
-                        currentRecord.product = line.replace(/produk[:\s]*/gi, '').trim();
-                    }
-                }
-                
-                // Look for amounts
-                const amountMatch = line.match(/(?:rp\s*)?(\d{1,3}(?:[,\.]\d{3})*(?:[,\.]\d{2})?)/i);
-                if (amountMatch && !currentRecord.amount) {
-                    currentRecord.amount = parseFloat(amountMatch[1].replace(/[,\.]/g, ''));
-                }
-                
-                // Look for status
-                if (lowerLine.includes('lunas') || lowerLine.includes('paid')) {
-                    currentRecord.status = 'paid';
-                } else if (lowerLine.includes('hutang')) {
-                    currentRecord.status = 'hutang';
-                } else if (lowerLine.includes('belum') || lowerLine.includes('overdue')) {
-                    currentRecord.status = 'overdue';
-                }
-                
-                // If we have enough data, save the record
-                if (currentRecord.name && currentRecord.phone && currentRecord.amount) {
-                    try {
-                        const sale = {
-                            id: Date.now() + Math.random() + successCount,
-                            customerName: currentRecord.name,
-                            customerPhone: currentRecord.phone,
-                            customerAddress: 'Alamat dari PDF',
-                            productName: currentRecord.product || 'Produk dari PDF',
-                            quantity: 1,
-                            unitPrice: currentRecord.amount,
-                            totalAmount: currentRecord.amount,
-                            paymentMethod: 'tunai',
-                            status: currentRecord.status || 'hutang',
-                            description: `Manual parsing from PDF: ${fileName}`,
-                            salesPerson: currentUser.name,
-                            createdAt: new Date().toISOString(),
-                            createdBy: `PDF Manual Import by ${currentUser.name}`,
-                            importedAt: new Date().toISOString(),
-                            importedBy: currentUser.name,
-                            importSource: 'PDF Manual Parse',
-                            importFileName: fileName,
-                            pdfLineNumber: index + 1
-                        };
-                        
-                        salesData.push(sale);
-                        successCount++;
-                        currentRecord = {}; // Reset for next record
-                        
-                    } catch (error) {
-                        errorCount++;
-                        errors.push(`Line ${index + 1}: ${error.message}`);
-                        currentRecord = {};
-                    }
-                }
-            });
-            
-            return { sales: salesData, successCount, errorCount, errors };
-        }
-
-        function normalizeStatus(status) {
-            if (!status) return 'hutang';
-            
-            if (status.includes('lunas') || status.includes('paid')) {
-                return 'paid';
-            } else if (status.includes('belum') || status.includes('overdue')) {
-                return 'overdue';
-            } else {
-                return 'hutang';
-            }
-        }
-
-        function showPDFImportConfirmation(parsedData) {
-            const currentSalesCount = sales.length;
-            
-            let confirmMessage = `📄 KONFIRMASI IMPORT PDF\n\n`;
-            confirmMessage += `📁 File: ${parsedData.fileName}\n`;
-            confirmMessage += `📋 Total baris: ${parsedData.totalLines}\n`;
-            confirmMessage += `✅ Berhasil diparsing: ${parsedData.successCount}\n`;
-            confirmMessage += `❌ Error: ${parsedData.errorCount}\n\n`;
-            
-            if (parsedData.errorCount > 0) {
-                confirmMessage += `⚠️ Error details:\n`;
-                parsedData.errors.slice(0, 2).forEach(error => {
-                    confirmMessage += `• ${error}\n`;
-                });
-                if (parsedData.errors.length > 2) {
-                    confirmMessage += `• ... dan ${parsedData.errors.length - 2} error lainnya\n`;
-                }
-                confirmMessage += `\n`;
-            }
-            
-            confirmMessage += `📊 Data saat ini: ${currentSalesCount} penjualan\n`;
-            confirmMessage += `📈 Setelah import: ${currentSalesCount + parsedData.successCount} penjualan\n\n`;
-            confirmMessage += `🔍 Preview teks PDF:\n"${parsedData.extractedText}"\n\n`;
-            confirmMessage += `✅ Proses import akan:\n`;
-            confirmMessage += `• Menambahkan ${parsedData.successCount} data baru\n`;
-            confirmMessage += `• OCR parsing dengan AI pattern matching\n`;
-            confirmMessage += `• Tracking lengkap untuk audit\n\n`;
-            confirmMessage += `Lanjutkan import?`;
-            
-            if (confirm(confirmMessage)) {
-                performPDFImport(parsedData);
-            }
-        }
-
-        function performPDFImport(parsedData) {
-            const syncTimestamp = new Date().toISOString();
-            const syncId = `pdf_import_${Date.now()}`;
-            
-            // Add parsed sales to system
-            parsedData.sales.forEach(sale => {
-                // Check for potential duplicates
-                const duplicate = sales.find(s => 
-                    s.customerName === sale.customerName && 
-                    s.customerPhone === sale.customerPhone &&
-                    Math.abs(s.totalAmount - sale.totalAmount) < 1000
-                );
-                
-                if (!duplicate) {
-                    sale.syncId = syncId;
-                    sale.syncTimestamp = syncTimestamp;
-                    sales.push(sale);
-                }
-            });
-            
-            // Save to localStorage
-            localStorage.setItem('sales', JSON.stringify(sales));
-            
-            // Create import report
-            const importReport = {
-                syncId: syncId,
-                syncDate: syncTimestamp,
-                syncBy: currentUser.name,
-                sourceType: 'PDF Import',
-                sourceFile: parsedData.fileName,
-                results: {
-                    totalLines: parsedData.totalLines,
-                    successfulImports: parsedData.successCount,
-                    errors: parsedData.errorCount,
-                    errorDetails: parsedData.errors,
-                    extractedTextPreview: parsedData.extractedText
-                }
-            };
-            
-            // Save import history
-            let syncHistory = JSON.parse(localStorage.getItem('syncHistory_sales')) || [];
-            syncHistory.push(importReport);
-            if (syncHistory.length > 10) syncHistory = syncHistory.slice(-10);
-            localStorage.setItem('syncHistory_sales', JSON.stringify(syncHistory));
-            
-            // Show success message
-            const syncDetails = `
-                🎉 <strong>IMPORT PDF BERHASIL!</strong><br><br>
-                📊 <strong>Hasil Import:</strong><br>
-                • ✅ ${parsedData.successCount} data berhasil diimport<br>
-                • ❌ ${parsedData.errorCount} data error (dilewati)<br>
-                • 📁 File: ${parsedData.fileName}<br>
-                • 🔍 OCR Pattern: Smart AI Parsing<br>
-                • 🕒 Waktu: ${new Date().toLocaleString('id-ID')}<br>
-                • 🆔 Import ID: ${syncId.substring(0, 20)}...<br><br>
-                ${parsedData.errorCount > 0 ? `⚠️ <strong>Catatan:</strong> ${parsedData.errorCount} baris dilewati karena tidak dapat diparsing dengan baik.<br><br>` : ''}
-                💡 <strong>Tips:</strong> PDF berhasil diparsing dengan OCR dan AI pattern matching.
-            `;
-            
-            document.getElementById('syncDetails').innerHTML = syncDetails;
-            document.getElementById('syncStatus').classList.remove('hidden');
-            
-            // Hide sync status after 15 seconds
-            setTimeout(() => {
-                document.getElementById('syncStatus').classList.add('hidden');
-            }, 15000);
-            
-            // Refresh displays
-            updateDashboard();
-            loadSalesHistory();
-            
-            showSuccessModal(`🎉 Import PDF berhasil!\n\n📊 ${parsedData.successCount} data berhasil diimport\n❌ ${parsedData.errorCount} data error\n📁 File: ${parsedData.fileName}\n\n🔍 Data berhasil diekstrak dengan OCR dan AI parsing!`);
-        }
-
-        function convertExcelToSystemFormat(excelData, fileName) {
-            const convertedSales = [];
-            let successCount = 0;
-            let errorCount = 0;
-            const errors = [];
-            
-            excelData.forEach((row, index) => {
-                try {
-                    // Map Excel columns to system format (flexible column mapping)
-                    const sale = {
-                        id: Date.now() + Math.random() + index,
-                        customerName: row['Nama Pembeli'] || row['Nama'] || row['Customer Name'] || row['Name'] || '',
-                        customerPhone: (row['No. Telepon'] || row['Telepon'] || row['Phone'] || row['No Telepon'] || '').toString(),
-                        customerAddress: row['Alamat'] || row['Address'] || '',
-                        productName: row['Nama Produk'] || row['Produk'] || row['Product'] || row['Product Name'] || '',
-                        quantity: parseInt(row['Jumlah'] || row['Quantity'] || row['Qty'] || 1),
-                        unitPrice: parseFloat(row['Harga Satuan'] || row['Unit Price'] || row['Price'] || 0),
-                        totalAmount: parseFloat(row['Total Harga'] || row['Total'] || row['Amount'] || 0),
-                        paymentMethod: (row['Metode Pembayaran'] || row['Metode'] || row['Payment Method'] || 'tunai').toLowerCase(),
-                        status: convertExcelStatus(row['Status'] || 'hutang'),
-                        description: row['Keterangan'] || row['Description'] || row['Notes'] || `Imported from Excel: ${fileName}`,
-                        salesPerson: row['Sales Person'] || row['Sales'] || row['Petugas'] || currentUser.name,
-                        createdAt: new Date().toISOString(),
-                        createdBy: `Excel Import by ${currentUser.name}`,
-                        importedAt: new Date().toISOString(),
-                        importedBy: currentUser.name,
-                        importSource: 'Excel File',
-                        importFileName: fileName,
-                        excelRowNumber: index + 2 // Excel row number (starting from 2, assuming header in row 1)
-                    };
-                    
-                    // Validate required fields
-                    if (!sale.customerName || !sale.customerPhone || !sale.productName || !sale.totalAmount || sale.totalAmount <= 0) {
-                        throw new Error(`Row ${index + 2}: Missing required data (Name, Phone, Product, or Amount)`);
-                    }
-                    
-                    // Normalize payment method
-                    if (!['tunai', 'transfer', 'kredit'].includes(sale.paymentMethod)) {
-                        sale.paymentMethod = 'tunai';
-                    }
-                    
-                    // Normalize status
-                    if (!['hutang', 'paid', 'overdue'].includes(sale.status)) {
-                        sale.status = 'hutang';
-                    }
-                    
-                    convertedSales.push(sale);
-                    successCount++;
-                    
-                } catch (error) {
-                    errorCount++;
-                    errors.push(`Row ${index + 2}: ${error.message}`);
-                }
-            });
-            
-            return {
-                sales: convertedSales,
-                fileName: fileName,
-                totalRows: excelData.length,
-                successCount: successCount,
-                errorCount: errorCount,
-                errors: errors,
-                importDate: new Date().toISOString(),
-                importBy: currentUser.name
-            };
-        }
-
-        function convertExcelStatus(statusValue) {
-            if (!statusValue) return 'hutang';
-            
-            const status = statusValue.toString().toLowerCase();
-            if (status.includes('lunas') || status.includes('paid') || status.includes('bayar')) {
-                return 'paid';
-            } else if (status.includes('belum') || status.includes('overdue') || status.includes('terlambat')) {
-                return 'overdue';
-            } else {
-                return 'hutang';
-            }
-        }
-
-        function showExcelImportConfirmation(convertedData) {
-            const currentSalesCount = sales.length;
-            
-            let confirmMessage = `📊 KONFIRMASI IMPORT EXCEL\n\n`;
-            confirmMessage += `📁 File: ${convertedData.fileName}\n`;
-            confirmMessage += `📋 Total baris: ${convertedData.totalRows}\n`;
-            confirmMessage += `✅ Berhasil dikonversi: ${convertedData.successCount}\n`;
-            confirmMessage += `❌ Error: ${convertedData.errorCount}\n\n`;
-            
-            if (convertedData.errorCount > 0) {
-                confirmMessage += `⚠️ Error details:\n`;
-                convertedData.errors.slice(0, 3).forEach(error => {
-                    confirmMessage += `• ${error}\n`;
-                });
-                if (convertedData.errors.length > 3) {
-                    confirmMessage += `• ... dan ${convertedData.errors.length - 3} error lainnya\n`;
-                }
-                confirmMessage += `\n`;
-            }
-            
-            confirmMessage += `📊 Data saat ini: ${currentSalesCount} penjualan\n`;
-            confirmMessage += `📈 Setelah import: ${currentSalesCount + convertedData.successCount} penjualan\n\n`;
-            confirmMessage += `✅ Proses import akan:\n`;
-            confirmMessage += `• Menambahkan ${convertedData.successCount} data baru\n`;
-            confirmMessage += `• Mencatat sumber import dari Excel\n`;
-            confirmMessage += `• Tracking lengkap untuk audit\n\n`;
-            confirmMessage += `Lanjutkan import?`;
-            
-            if (confirm(confirmMessage)) {
-                performExcelImport(convertedData);
-            }
-        }
-
-        function performExcelImport(convertedData) {
-            const syncTimestamp = new Date().toISOString();
-            const syncId = `excel_import_${Date.now()}`;
-            
-            // Add converted sales to system
-            convertedData.sales.forEach(sale => {
-                // Check for potential duplicates
-                const duplicate = sales.find(s => 
-                    s.customerName === sale.customerName && 
-                    s.customerPhone === sale.customerPhone &&
-                    Math.abs(s.totalAmount - sale.totalAmount) < 1000
-                );
-                
-                if (!duplicate) {
-                    sale.syncId = syncId;
-                    sale.syncTimestamp = syncTimestamp;
-                    sales.push(sale);
-                }
-            });
-            
-            // Save to localStorage
-            localStorage.setItem('sales', JSON.stringify(sales));
-            
-            // Create import report
-            const importReport = {
-                syncId: syncId,
-                syncDate: syncTimestamp,
-                syncBy: currentUser.name,
-                sourceType: 'Excel Import',
-                sourceFile: convertedData.fileName,
-                results: {
-                    totalRows: convertedData.totalRows,
-                    successfulImports: convertedData.successCount,
-                    errors: convertedData.errorCount,
-                    errorDetails: convertedData.errors
-                }
-            };
-            
-            // Save import history
-            let syncHistory = JSON.parse(localStorage.getItem('syncHistory_sales')) || [];
-            syncHistory.push(importReport);
-            if (syncHistory.length > 10) syncHistory = syncHistory.slice(-10);
-            localStorage.setItem('syncHistory_sales', JSON.stringify(syncHistory));
-            
-            // Show success message
-            const syncDetails = `
-                🎉 <strong>IMPORT EXCEL BERHASIL!</strong><br><br>
-                📊 <strong>Hasil Import:</strong><br>
-                • ✅ ${convertedData.successCount} data berhasil diimport<br>
-                • ❌ ${convertedData.errorCount} data error (dilewati)<br>
-                • 📁 File: ${convertedData.fileName}<br>
-                • 🕒 Waktu: ${new Date().toLocaleString('id-ID')}<br>
-                • 🆔 Import ID: ${syncId.substring(0, 20)}...<br><br>
-                ${convertedData.errorCount > 0 ? `⚠️ <strong>Catatan:</strong> ${convertedData.errorCount} baris dilewati karena data tidak lengkap atau tidak valid.<br><br>` : ''}
-                💡 <strong>Tips:</strong> Data Excel berhasil dikonversi ke format sistem dengan tracking lengkap.
-            `;
-            
-            document.getElementById('syncDetails').innerHTML = syncDetails;
-            document.getElementById('syncStatus').classList.remove('hidden');
-            
-            // Hide sync status after 15 seconds
-            setTimeout(() => {
-                document.getElementById('syncStatus').classList.add('hidden');
-            }, 15000);
-            
-            // Refresh displays
-            updateDashboard();
-            loadSalesHistory();
-            
-            showSuccessModal(`🎉 Import Excel berhasil!\n\n📊 ${convertedData.successCount} data berhasil diimport\n❌ ${convertedData.errorCount} data error\n📁 File: ${convertedData.fileName}\n\n💡 Data Excel telah dikonversi ke sistem dengan tracking lengkap!`);
-        }
-
-        function showImportConfirmation(importData) {
-            const currentSalesCount = sales.length;
-            const importSalesCount = importData.sales.length;
-            const currentUsersCount = users.filter(u => u.id > 2).length;
-            const importUsersCount = importData.users.length;
-            
-            const deviceInfo = importData.deviceInfo || 'Unknown Device';
-            const exportDate = new Date(importData.exportDate).toLocaleString('id-ID');
-            
-            const confirmMessage = `🔄 KONFIRMASI SINKRONISASI DATA\n\n` +
-                `📥 Data yang akan diimport:\n` +
-                `• ${importSalesCount} data penjualan\n` +
-                `• ${importUsersCount} data user\n` +
-                `• Export oleh: ${importData.exportBy}\n` +
-                `• Dari device: ${deviceInfo}\n` +
-                `• Tanggal export: ${exportDate}\n\n` +
-                `📊 Data saat ini:\n` +
-                `• ${currentSalesCount} data penjualan\n` +
-                `• ${currentUsersCount} data user\n\n` +
-                `✅ Proses sinkronisasi akan:\n` +
-                `• Menggabungkan data (tidak menghapus yang lama)\n` +
-                `• Update data yang sama berdasarkan ID\n` +
-                `• Menambahkan data baru\n` +
-                `• Mencatat history sinkronisasi\n\n` +
-                `Lanjutkan import?`;
-            
-            if (confirm(confirmMessage)) {
-                performDataImport(importData);
-            }
-        }
-
-        function performDataImport(importData) {
-            let newSalesCount = 0;
-            let newUsersCount = 0;
-            let updatedSalesCount = 0;
-            let updatedUsersCount = 0;
-            let skippedSalesCount = 0;
-            
-            const syncTimestamp = new Date().toISOString();
-            const syncId = `sync_${Date.now()}`;
-            
-            // Import sales - merge by ID, add new ones
-            importData.sales.forEach(importSale => {
-                const existingSaleIndex = sales.findIndex(s => s.id === importSale.id);
-                if (existingSaleIndex !== -1) {
-                    // Update existing sale with sync info
-                    sales[existingSaleIndex] = {
-                        ...importSale,
-                        lastSyncAt: syncTimestamp,
-                        lastSyncBy: currentUser.name,
-                        lastSyncId: syncId,
-                        syncSource: importData.exportBy || 'Unknown'
-                    };
-                    updatedSalesCount++;
-                } else {
-                    // Check for potential duplicates by name and phone
-                    const duplicate = sales.find(s => 
-                        s.customerName === importSale.customerName && 
-                        s.customerPhone === importSale.customerPhone &&
-                        Math.abs(s.totalAmount - importSale.totalAmount) < 1000 // Allow small amount differences
-                    );
-                    
-                    if (duplicate) {
-                        skippedSalesCount++;
-                    } else {
-                        // Add new sale with sync info
-                        sales.push({
-                            ...importSale,
-                            importedAt: syncTimestamp,
-                            importedBy: currentUser.name,
-                            syncId: syncId,
-                            syncSource: importData.exportBy || 'Unknown'
-                        });
-                        newSalesCount++;
-                    }
-                }
-            });
-            
-            // Import users - merge by email, add new ones (except default users)
-            importData.users.forEach(importUser => {
-                const existingUserIndex = users.findIndex(u => u.email === importUser.email);
-                if (existingUserIndex !== -1) {
-                    // Update existing user (except default users)
-                    if (users[existingUserIndex].id > 2) {
-                        users[existingUserIndex] = {
-                            ...importUser,
-                            id: users[existingUserIndex].id, // Keep original ID
-                            lastSyncAt: syncTimestamp
-                        };
-                        updatedUsersCount++;
-                    }
-                } else {
-                    // Add new user with new ID
-                    const newUser = {
-                        ...importUser,
-                        id: Math.max(...users.map(u => u.id)) + 1,
-                        importedAt: syncTimestamp,
-                        importedBy: currentUser.name
-                    };
-                    users.push(newUser);
-                    newUsersCount++;
-                }
-            });
-            
-            // Save to localStorage
-            localStorage.setItem('sales', JSON.stringify(sales));
-            localStorage.setItem('users_sales', JSON.stringify(users));
-            
-            // Create detailed sync report
-            const syncReport = {
-                syncId: syncId,
-                syncDate: syncTimestamp,
-                syncBy: currentUser.name,
-                sourceDevice: importData.deviceInfo || 'Unknown Device',
-                sourceUser: importData.exportBy,
-                sourceExportDate: importData.exportDate,
-                results: {
-                    newSales: newSalesCount,
-                    updatedSales: updatedSalesCount,
-                    skippedSales: skippedSalesCount,
-                    newUsers: newUsersCount,
-                    updatedUsers: updatedUsersCount,
-                    totalProcessed: newSalesCount + updatedSalesCount + newUsersCount + updatedUsersCount
-                }
-            };
-            
-            // Save sync history
-            let syncHistory = JSON.parse(localStorage.getItem('syncHistory_sales')) || [];
-            syncHistory.push(syncReport);
-            if (syncHistory.length > 10) syncHistory = syncHistory.slice(-10); // Keep last 10 syncs
-            localStorage.setItem('syncHistory_sales', JSON.stringify(syncHistory));
-            
-            // Show detailed sync status
-            const syncDetails = `
-                🎉 <strong>SINKRONISASI BERHASIL!</strong><br><br>
-                📊 <strong>Hasil Import:</strong><br>
-                • ✅ ${newSalesCount} penjualan baru ditambahkan<br>
-                • 🔄 ${updatedSalesCount} penjualan diperbarui<br>
-                • ⚠️ ${skippedSalesCount} penjualan duplikat dilewati<br>
-                • 👤 ${newUsersCount} user baru ditambahkan<br>
-                • 🔄 ${updatedUsersCount} user diperbarui<br><br>
-                📱 <strong>Sumber:</strong> ${importData.exportBy} (${importData.deviceInfo || 'Unknown Device'})<br>
-                🕒 <strong>Waktu:</strong> ${new Date().toLocaleString('id-ID')}<br>
-                🆔 <strong>Sync ID:</strong> ${syncId.substring(0, 12)}...
-            `;
-            
-            document.getElementById('syncDetails').innerHTML = syncDetails;
-            document.getElementById('syncStatus').classList.remove('hidden');
-            
-            // Hide sync status after 15 seconds
-            setTimeout(() => {
-                document.getElementById('syncStatus').classList.add('hidden');
-            }, 15000);
-            
-            // Refresh all data displays
-            updateDashboard();
-            loadSalesHistory();
-            if (currentUser.role === 'admin') {
-                loadUsersList();
-            }
-            
-            const totalSynced = newSalesCount + updatedSalesCount + newUsersCount + updatedUsersCount;
-            showSuccessModal(`🎉 Sinkronisasi berhasil!\n\n📊 Total ${totalSynced} data berhasil disinkronisasi\n✅ ${newSalesCount + newUsersCount} data baru\n🔄 ${updatedSalesCount + updatedUsersCount} data diperbarui\n⚠️ ${skippedSalesCount} duplikat dilewati\n\n🔍 Lihat detail di panel Sync Status`);
-        }
-
-        document.getElementById('exportPDF').addEventListener('click', function() {
             const { jsPDF } = window.jspdf;
             const doc = new jsPDF();
-            
-            // Title
-            doc.setFontSize(16);
-            doc.text('LAPORAN DATA PENJUALAN', 105, 20, { align: 'center' });
-            doc.setFontSize(12);
-            doc.text(`Tanggal Export: ${new Date().toLocaleDateString('id-ID')}`, 105, 30, { align: 'center' });
-            
-            // Table headers
-            const headers = ['No', 'Nama', 'Telepon', 'Produk', 'Total', 'Status', 'Sales'];
-            const colWidths = [15, 30, 25, 25, 25, 20, 25];
-            let xPos = 20;
-            let yPos = 50;
-            
-            // Draw header
-            doc.setFontSize(10);
-            doc.setFont(undefined, 'bold');
-            headers.forEach((header, i) => {
-                doc.text(header, xPos, yPos);
-                xPos += colWidths[i];
+
+            doc.text('Laporan Penjualan', 20, 20);
+            doc.text(`Tanggal: ${new Date().toLocaleDateString('id-ID')}`, 20, 30);
+
+            let y = 50;
+            doc.text('Tanggal', 20, y);
+            doc.text('Produk', 60, y);
+            doc.text('Jumlah', 120, y);
+            doc.text('Total', 150, y);
+
+            y += 10;
+            salesData.forEach(sale => {
+                doc.text(new Date(sale.date).toLocaleDateString('id-ID'), 20, y);
+                doc.text(sale.productName, 60, y);
+                doc.text(sale.quantity.toString(), 120, y);
+                doc.text(`Rp ${sale.total.toLocaleString('id-ID')}`, 150, y);
+                y += 10;
             });
-            
-            // Draw line under header
-            doc.line(20, yPos + 2, 190, yPos + 2);
-            yPos += 10;
-            
-            // Draw data rows
-            doc.setFont(undefined, 'normal');
-            sales.forEach((sale, index) => {
-                if (yPos > 270) {
-                    doc.addPage();
-                    yPos = 20;
-                    
-                    // Redraw header on new page
-                    doc.setFont(undefined, 'bold');
-                    xPos = 20;
-                    headers.forEach((header, i) => {
-                        doc.text(header, xPos, yPos);
-                        xPos += colWidths[i];
-                    });
-                    doc.line(20, yPos + 2, 190, yPos + 2);
-                    yPos += 10;
-                    doc.setFont(undefined, 'normal');
-                }
-                
-                xPos = 20;
-                const rowData = [
-                    (index + 1).toString(),
-                    sale.customerName.substring(0, 12),
-                    sale.customerPhone,
-                    sale.productName.substring(0, 10),
-                    `Rp ${(sale.totalAmount / 1000).toFixed(0)}K`,
-                    getStatusText(sale.status),
-                    (sale.salesPerson || '-').substring(0, 10)
-                ];
-                
-                rowData.forEach((data, i) => {
-                    doc.text(data, xPos, yPos);
-                    xPos += colWidths[i];
-                });
-                
-                yPos += 8;
-            });
-            
-            // Summary
-            yPos += 10;
-            doc.line(20, yPos, 190, yPos);
-            yPos += 10;
-            doc.setFont(undefined, 'bold');
-            doc.text(`Total Data: ${sales.length}`, 20, yPos);
-            doc.text(`Total Nilai: Rp ${sales.reduce((sum, sale) => sum + sale.totalAmount, 0).toLocaleString('id-ID')}`, 20, yPos + 10);
-            
-            doc.save(`laporan-penjualan-${new Date().toISOString().split('T')[0]}.pdf`);
-        });
 
-        // User Management Functions
-        function loadUsersList() {
-            const usersList = document.getElementById('usersList');
-            if (users.length === 0) {
-                usersList.innerHTML = '<p class="text-gray-500 text-center py-8">Belum ada data user</p>';
-            } else {
-                usersList.innerHTML = users.map(user => `
-                    <div class="bg-white rounded-lg p-4 shadow-sm border border-gray-200">
-                        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center space-y-2 sm:space-y-0">
-                            <div class="flex-1">
-                                <h4 class="font-semibold text-gray-800">${user.name}</h4>
-                                <p class="text-sm text-gray-600">${user.email}</p>
-                                <div class="flex flex-wrap gap-2 mt-1">
-                                    <span class="inline-block px-2 py-1 text-xs rounded-full ${user.role === 'admin' ? 'bg-purple-100 text-purple-800' : 'bg-green-100 text-green-800'}">${user.role.toUpperCase()}</span>
-                                    ${user.importedAt ? '<span class="inline-block px-2 py-1 text-xs rounded-full bg-green-100 text-green-800">SYNCED</span>' : ''}
-                                </div>
-                                ${user.lastSyncAt ? `<p class="text-xs text-gray-500 mt-1">Last sync: ${new Date(user.lastSyncAt).toLocaleDateString('id-ID')}</p>` : ''}
-                            </div>
-                            <div class="flex space-x-2 w-full sm:w-auto">
-                                ${user.id > 2 ? `<button onclick="deleteUser(${user.id})" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-sm transition-colors flex-1 sm:flex-none">
-                                    <i class="fas fa-trash mr-1"></i>Hapus
-                                </button>` : '<span class="text-xs text-gray-500 px-3 py-1">Default User</span>'}
-                            </div>
-                        </div>
-                    </div>
-                `).join('');
-            }
-        }
-
-        // Add User Form Handlers
-        document.getElementById('addUserBtn').addEventListener('click', function() {
-            document.getElementById('addUserForm').classList.remove('hidden');
-        });
-
-        document.getElementById('cancelAddUser').addEventListener('click', function() {
-            document.getElementById('addUserForm').classList.add('hidden');
-            document.getElementById('userForm').reset();
-        });
-
-        document.getElementById('userForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const name = document.getElementById('newUserName').value;
-            const email = document.getElementById('newUserEmail').value;
-            const password = document.getElementById('newUserPassword').value;
-            const role = document.getElementById('newUserRole').value;
-            
-            if (users.find(u => u.email === email)) {
-                showSuccessModal('Email sudah terdaftar!');
-                return;
-            }
-            
-            const newUser = {
-                id: Math.max(...users.map(u => u.id)) + 1,
-                name,
-                email,
-                password,
-                role,
-                createdAt: new Date().toISOString(),
-                createdBy: currentUser.name
-            };
-            
-            users.push(newUser);
-            localStorage.setItem('users_sales', JSON.stringify(users));
-            
-            showSuccessModal('User berhasil ditambahkan!');
-            loadUsersList();
-            document.getElementById('addUserForm').classList.add('hidden');
-            this.reset();
-        });
-
-        function deleteUser(id) {
-            if (id <= 2) {
-                showSuccessModal('User default tidak dapat dihapus!');
-                return;
-            }
-            
-            users = users.filter(u => u.id !== id);
-            localStorage.setItem('users_sales', JSON.stringify(users));
-            showSuccessModal('User berhasil dihapus!');
-            loadUsersList();
-        }
-
-        // Generate Data Functions
-        document.getElementById('generateDataBtn').addEventListener('click', function() {
-            const count = parseInt(document.getElementById('generateCount').value);
-            const includeDebt = document.getElementById('genDebt').checked;
-            const includePaid = document.getElementById('genPaid').checked;
-            const includeOverdue = document.getElementById('genOverdue').checked;
-            
-            if (!includeDebt && !includePaid && !includeOverdue) {
-                showSuccessModal('Pilih minimal satu status untuk generate data!');
-                return;
-            }
-            
-            generateDummyData(count, { includeDebt, includePaid, includeOverdue });
-        });
-
-        function generateDummyData(count, options) {
-            const progress = document.getElementById('generateProgress');
-            const progressBar = document.getElementById('progressBar');
-            
-            progress.classList.remove('hidden');
-            
-            const names = [
-                'Ahmad Wijaya', 'Siti Nurhaliza', 'Budi Santoso', 'Dewi Sartika', 'Eko Prasetyo',
-                'Fitri Handayani', 'Gunawan Susanto', 'Hesti Purnamasari', 'Indra Kusuma', 'Joko Widodo',
-                'Kartika Sari', 'Lukman Hakim', 'Maya Sari', 'Nanda Pratama', 'Oki Setiana',
-                'Putri Maharani', 'Qori Sandioriva', 'Rini Soemarno', 'Sari Nila', 'Tono Suratman'
-            ];
-            
-            const addresses = [
-                'Jl. Merdeka No. 123, Jakarta', 'Jl. Sudirman No. 456, Bandung', 'Jl. Thamrin No. 789, Surabaya',
-                'Jl. Gatot Subroto No. 321, Medan', 'Jl. Ahmad Yani No. 654, Semarang', 'Jl. Diponegoro No. 987, Yogyakarta',
-                'Jl. Veteran No. 147, Malang', 'Jl. Pahlawan No. 258, Denpasar', 'Jl. Pemuda No. 369, Palembang'
-            ];
-
-            const products = [
-                'Laptop ASUS', 'HP Samsung Galaxy', 'Sepatu Nike', 'Tas Eiger', 'Jam Tangan Casio',
-                'Kamera Canon', 'Headphone Sony', 'Mouse Logitech', 'Keyboard Mechanical', 'Monitor LG',
-                'Printer Epson', 'Speaker JBL', 'Power Bank Xiaomi', 'Charger Original', 'Casing HP'
-            ];
-            
-            const salesPersons = [
-                'Mario Haulussy', 'Macho Haulussy', 'Ryan Pattiwael', 'Stevy Wuarlela',
-                'Stevian Lauluw', 'Gilberd', 'Glen Tansora', 'Glen Ohman'
-            ];
-            
-            const statuses = [];
-            if (options.includeDebt) statuses.push('hutang');
-            if (options.includePaid) statuses.push('paid');
-            if (options.includeOverdue) statuses.push('overdue');
-            
-            const methods = ['tunai', 'transfer', 'kredit'];
-            
-            let generated = 0;
-            const interval = setInterval(() => {
-                if (generated >= count) {
-                    clearInterval(interval);
-                    progress.classList.add('hidden');
-                    progressBar.style.width = '0%';
-                    showSuccessModal(`Berhasil generate ${count} data penjualan!`);
-                    updateDashboard();
-                    loadSalesHistory();
-                    return;
-                }
-                
-                // Generate batch of 5 data at once
-                const batchSize = Math.min(5, count - generated);
-                for (let i = 0; i < batchSize; i++) {
-                    const randomName = names[Math.floor(Math.random() * names.length)];
-                    const randomAddress = addresses[Math.floor(Math.random() * addresses.length)];
-                    const randomProduct = products[Math.floor(Math.random() * products.length)];
-                    const randomSalesPerson = salesPersons[Math.floor(Math.random() * salesPersons.length)];
-                    const randomStatus = statuses[Math.floor(Math.random() * statuses.length)];
-                    const randomMethod = methods[Math.floor(Math.random() * methods.length)];
-                    const randomQuantity = Math.floor(Math.random() * 5) + 1;
-                    const randomUnitPrice = Math.floor(Math.random() * 2000000) + 50000; // 50K - 2M
-                    
-                    const sale = {
-                        id: Date.now() + Math.random(),
-                        customerName: randomName,
-                        customerPhone: `08${Math.floor(Math.random() * 1000000000).toString().padStart(9, '0')}`,
-                        customerAddress: randomAddress,
-                        productName: randomProduct,
-                        quantity: randomQuantity,
-                        unitPrice: randomUnitPrice,
-                        totalAmount: randomQuantity * randomUnitPrice,
-                        paymentMethod: randomMethod,
-                        status: randomStatus,
-                        description: `Penjualan ${randomMethod} - Generated Data`,
-                        salesPerson: randomSalesPerson,
-                        createdAt: new Date(Date.now() - Math.random() * 30 * 24 * 60 * 60 * 1000).toISOString(),
-                        createdBy: 'System Generator'
-                    };
-                    
-                    sales.push(sale);
-                    generated++;
-                }
-                
-                localStorage.setItem('sales', JSON.stringify(sales));
-                
-                const progressPercent = (generated / count) * 100;
-                progressBar.style.width = `${progressPercent}%`;
-            }, 100);
+            doc.save('laporan-penjualan.pdf');
+            showToast('Laporan berhasil diekspor ke PDF!', 'success');
         }
 
         // Utility functions
-        function getStatusColor(status) {
-            switch (status) {
-                case 'paid': return 'bg-blue-100 text-blue-800';
-                case 'hutang': return 'bg-orange-100 text-orange-800';
-                case 'overdue': return 'bg-red-100 text-red-800';
-                default: return 'bg-gray-100 text-gray-800';
+        function updateDateTime() {
+            const now = new Date();
+            const options = { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            };
+            document.getElementById('currentDateTime').textContent = now.toLocaleDateString('id-ID', options);
+        }
+
+        function showToast(message, type = 'info') {
+            const toast = document.createElement('div');
+            toast.className = `fixed top-4 right-4 z-50 px-6 py-3 rounded-lg text-white font-semibold fade-in ${
+                type === 'success' ? 'bg-green-600' : 
+                type === 'error' ? 'bg-red-600' : 'bg-blue-600'
+            }`;
+            toast.textContent = message;
+            
+            document.body.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.remove();
+            }, 3000);
+        }
+
+        // Close sidebar when clicking outside on mobile
+        document.addEventListener('click', function(e) {
+            const sidebar = document.getElementById('sidebar');
+            const sidebarToggle = document.getElementById('sidebarToggle');
+            
+            if (window.innerWidth < 1024 && 
+                !sidebar.contains(e.target) && 
+                !sidebarToggle.contains(e.target) &&
+                sidebar.classList.contains('open')) {
+                sidebar.classList.remove('open');
             }
-        }
-
-        function getStatusText(status) {
-            switch (status) {
-                case 'paid': return 'Lunas';
-                case 'hutang': return 'Hutang';
-                case 'overdue': return 'Belum Lunas';
-                default: return 'Unknown';
-            }
-        }
-
-        function showMessage(message, type) {
-            // Simple message display - you can enhance this
-            if (type === 'error') {
-                document.getElementById('successMessage').textContent = message;
-                document.getElementById('successModal').classList.remove('hidden');
-            }
-        }
-
-        function showSuccessModal(message) {
-            document.getElementById('successMessage').textContent = message;
-            document.getElementById('successModal').classList.remove('hidden');
-        }
-
-        document.getElementById('closeSuccessModal').addEventListener('click', function() {
-            document.getElementById('successModal').classList.add('hidden');
         });
-
-        // Initialize the application
-        initApp();
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99405abf85cdfd02',t:'MTc2MTM4MTA1My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9942058a90f245e2',t:'MTc2MTM5ODUzNS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
